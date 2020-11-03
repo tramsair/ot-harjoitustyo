@@ -2,6 +2,9 @@ commit 9fc3f80026c4a139349c18b3191008a6679db7ae
 Author: Erno Trygg <tramsair@gmail.com>
 Date:   Tue Nov 3 23:28:16 2020 +0200
 
+LISÄYS
+
+
     muutoksiaja poistoja tiedostoissa
 
  tiedostoja/file2             | 0
