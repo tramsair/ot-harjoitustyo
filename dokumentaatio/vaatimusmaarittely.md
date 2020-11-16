@@ -2,11 +2,19 @@
 ## Sovelluksen tarkoitus
 Tarkoituksena on luoda simppeli roolipeli jossa kolutaan yksinkertaista linnaa. Pelaaja tekee päätöksiä ja peli heittää erilaisia noppia ratkaistakseen lopputuloksia
 ## Perustoiminnallisuus
-Peli luo alkuun pelaajalle hahmon heittämällä noppia. Hahmolla on viisi ominaisuutta joiden suurus on kolmen kuusisivuisen nopan yhteenlaskettu tulos. Lisäksi pelaaja saa lisätä yhden nopan johonkin ominaisuuteen. Peli tallentaa ja päivittää hahmon tietoja pelin edetessä.
+* Peli kykenee heittämään useanlaisia noppia
+* Peli luo alkuun pelaajalle hahmon heittämällä noppia. Hahmolla on viisi ominaisuutta joiden suurus on kolmen kuusisivuisen nopan yhteenlaskettu tulos. Peli tallentaa ja päivittää hahmon tietoja pelin edetessä. Lisäksi hahmolla on kymmenen *kestopistettä*.
+* Pelin maailma on jakautunut alueisiin kuten "linnan piha" tai "linnan salit". Alueille määritellään viereiset alueet joihin ne ovat yhteydessä. Pelaaja voi liikuttaa hahmoaan alueesta toiseen.
+* Peli kuvailee tapahtumia ja alueita pelaajalle tekstin välityksellä.
+* Pelillä on jokaista aluetta kohden oma lista asioista joita pelaajan hahmo saattaa alueella kohda sinne siirtyessään. Nämä asiat ovat usein **haasteita**.
+* Hahmon kohdatessa haasteen peli antaa pelaajalle vaihtoehtoja joista pelaaja voi valita.
+* Peli heittää noppaa hahmolle ja/tai haasteelle, ja lisää tulokseen asiaan kuuluvan ominaisuuden. Sitten peli vertaa joko tuloksia toisiinsa, tai johonkin vakioon. Tämän periaatteen perusteella peli määrittelee voittiko vai hävisikö hahmo haasteelle.
+* Usein häviö johtaa siihen että hahmo menettää kestopisteen. Mikäli hahmon kestopisteet laskevat nollaan, häviää pelaaja pelin.
 
-Pelin maailma on jakautunut alueisiin kuten "linnan piha" tai "linnan salit". Alueille määritellään viereiset alueet joihin ne ovat yhteydessä. Pelaaja voi liikuttaa hahmoaan alueesta toiseen.
 
-Liikkumisen sijaan pelaaja voi valita hahmon tutkivan aluetta jossa hahmo sijaitsee. Tutkittaessa hahmo voi joko löytää esineitä tai kohdata haasteita. Haasteen kohdatessa pelaaja saa vaihtoehtoja. Selvittääkseen voittiko hahmo haasteen peli heittää noppaa ja lisää tulokseen jonkin hahmon ominaisuuksista, ja vertaa tulosta tavoitenumeroon. Mikäli tulos on alle, hahmo häviää haasteen. Mikäli tulos on sama tai yli, hahmo voittaa haasteen.
-
-Pelillä on jokaiselle alueelle lista asioista joista alueella saatetaan kohdata, kun hahmo etsii. Peli arpoo listalta joka kerta mitä tapahtuu
-
+## Jatkokehitysideoita
+* Hahmo voi löytää esineitä, jotka helpottavat tai mahdollistavat etenemisen pelissä. Esimerkkinä avaimet yms.
+* Tietyillä alueilla voi tehdä erityistoimintoja liikkumisen ja tutkimisen lisäksi.
+* Mahdollisuus tallentaa peli
+* Alueet muuttuvat pelaajan tehdessä asioita niissä.
+* Olio joka liikkuu alueeiden välillä/jahtaa pelaajan hahmoa
