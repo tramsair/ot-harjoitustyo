@@ -26,9 +26,9 @@ public class UserSpace {
     
     public void launch(){
         
-        System.out.println("********************************************************************************************************");
-        System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa-minus-minus");
-        System.out.println("********************************************************************************************************");
+        System.out.println("|*********************************************************************************************************|");
+        System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa-minus-minus, v0,0002");
+        System.out.println("|*********************************************************************************************************|");
         System.out.println("Available commands:");
         printCommands();
         
@@ -54,7 +54,7 @@ public class UserSpace {
             if (command.equals("2")) {
                 System.out.println("Name your character: ");
                 
-                Character hero = new Character(scribe.nextLine());
+                Hero hero = new Hero(scribe.nextLine());
                 
                 System.out.println();
                 System.out.println(hero);

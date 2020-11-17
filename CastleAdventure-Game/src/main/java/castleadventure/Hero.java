@@ -2,7 +2,7 @@
 package castleadventure;
 
 
-public class Character {
+public class Hero {
     
     private int healthPoints;
     private int physique;
@@ -13,7 +13,7 @@ public class Character {
     private String name;
     private Dice D6 = new Dice(6);
     
-    public Character(String name){
+    public Hero(String name){
         this.agility = rollAttribute();
         this.charisma = rollAttribute();
         this.knowledge = rollAttribute();
