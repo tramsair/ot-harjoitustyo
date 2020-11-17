@@ -21,6 +21,7 @@ public class UserSpace {
 
         commands.put("x", "Exit");
         commands.put("1", "Throw a D6");
+        commands.put("2", "Create a character");
     }
     
     public void launch(){
@@ -48,6 +49,15 @@ public class UserSpace {
             
             if (command.equals("1")) {
                 System.out.println(die.rollDie());
+            }
+            
+            if (command.equals("2")) {
+                System.out.println("Name your character: ");
+                
+                Character hero = new Character(scribe.nextLine());
+                
+                System.out.println();
+                System.out.println(hero);
             }
 
         }
