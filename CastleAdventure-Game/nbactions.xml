@@ -46,4 +46,19 @@
                 <exec.workingdir>C:\Users\Mato\OhjelmistoTekniikat20\ot-harjoitustyo\CastleAdventure-Game</exec.workingdir>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-testikattavuus</actionName>
+            <displayName>testikattavuus</displayName>
+            <goals>
+                <goal>jacoco:report</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-chekstyle</actionName>
+            <displayName>chekstyle</displayName>
+            <goals>
+                <goal>jxr:jxr</goal>
+                <goal>checkstyle:checkstyle</goal>
+            </goals>
+        </action>
     </actions>
