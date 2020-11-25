@@ -1,5 +1,5 @@
 
-import castleadventure.Hero;
+import castleadventure.tools.Hero;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

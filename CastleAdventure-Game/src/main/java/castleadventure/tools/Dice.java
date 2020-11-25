@@ -1,5 +1,5 @@
 
-package castleadventure;
+package castleadventure.tools;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -9,16 +9,14 @@ import java.util.Scanner;
 public class Dice {
     
     private Random random;
-    private int faces;
     
     //Constructor
     public Dice(int faces){
         this.random = new Random();
-        this.faces = faces;
     }
     
     //Roll one die, returns the roll result
-    public int rollDie(){
+    public int rollDie(int faces){
         return 1 + random.nextInt(faces);
     }
     
@@ -28,10 +26,11 @@ public class Dice {
         int sum = 0;
         
         while(i <= number){
-            sum = sum + die.rollDie();
+            sum = sum + die.rollDie(6);
             i++;
         }
         
         return sum;
     }
+    
 }

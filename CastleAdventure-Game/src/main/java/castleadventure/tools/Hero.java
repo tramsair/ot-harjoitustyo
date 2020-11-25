@@ -1,6 +1,8 @@
 
-package castleadventure;
+package castleadventure.tools;
 
+//Representation of the player, the player charater. The game will use the attributes with dice rolls to find out if the 
+//succeeds or fails to overcome any challenges they fail.
 
 public class Hero {
     
@@ -25,7 +27,7 @@ public class Hero {
     }
     
     
-    
+   
     
 //------------------------------------------------------------------------------
 //          Getters
@@ -60,15 +62,31 @@ public class Hero {
         return this.name;
     }
     
+    public int getAttribute(String attribute){
+        if(attribute.equals("knowledge")){
+            return this.knowledge;
+        } else if(attribute.equals("physique")){
+            return this.physique;
+        } else if(attribute.equals("agility")){
+            return this.agility;
+        } else if(attribute.equals("willpower")){
+            return this.willpower;
+        } else{
+            return this.charisma;
+        }
+            
+    }
+    
 //              Getters end
 //==============================================================================    
+    
     
     public int rollAttribute(){
         return D6.rollDice(3, D6);
     }
     
     public String toString(){
-        return "Character name: " + this.getName() + "  Health Points: " + this.getHP() + "\n" +
+        return "Character name: " + this.getName() + " | " + "  Health Points: " + this.getHP() + "\n" +
                 "Physique: " + this.getPhysique() + "\n" +
                 "Agility: " + this.getAgility() + "\n" +
                 "Knowledge: " + this.getKnowledge() + "\n" +
