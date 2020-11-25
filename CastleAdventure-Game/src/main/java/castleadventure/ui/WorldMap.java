@@ -19,7 +19,7 @@ public class WorldMap {
     private Dice die;
     private Hero hero;
     
-    public WorldMap(Scanner reader, Hero hero, Dice die){
+    public WorldMap(Scanner reader, Hero hero, Dice die) {
         this.scribe = reader;
         this.hero = hero;
         this.die = die;
@@ -29,7 +29,7 @@ public class WorldMap {
         this.meadow = new Area();
         meadow.setDescription("**Placeholder for Meadow Description**");
         
-        meadow.addCommand("1" ,"Explore area");
+        meadow.addCommand("1", "Explore area");
         meadow.addCommand("2", "Enter trough the gate");
         
         Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder", "negative placeholder");
@@ -42,7 +42,7 @@ public class WorldMap {
         this.cortyard = new Area();
         cortyard.setDescription("**Placeholder for Cortyard Description**");
     
-        cortyard.addCommand("1" ,"Explore area");
+        cortyard.addCommand("1", "Explore area");
         cortyard.addCommand("2", "Exit trough the gate");
         
         Encounter test = new Encounter("placeholder encounter2", 25, "physique", "positive placeholder2", "negative placeholder2");
@@ -57,7 +57,7 @@ public class WorldMap {
     
     }
     
-    public void launch(){
+    public void launch() {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("*A placeholder for the Intro*");
         System.out.println("--------------------------------------------------------------------");
@@ -102,19 +102,7 @@ public class WorldMap {
 //                moves to the first neighbour on the list
                 currentArea = currentArea.getNeighbour(0);
             }
-            
-            if (command.equals("3")) {
-                
-            }
-            
-            if (command.equals("4")) {
-                
-            }
-            
-            if (command.equals("5")) {
-                
-            }
-            
+
             if (command.equals("c")) {
                 System.out.println("_____________________________________________");
                 System.out.println(hero);
@@ -127,8 +115,8 @@ public class WorldMap {
     
     //    Prints out the current area's commands
     
-    public void printCommands(Area area){
-        for (String key : area.getCommands().keySet()){
+    public void printCommands(Area area) {
+        for (String key : area.getCommands().keySet()) {
             System.out.println(key + " | " + area.getCommands().get(key));
         }
     }

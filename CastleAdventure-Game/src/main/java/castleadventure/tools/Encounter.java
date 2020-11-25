@@ -11,7 +11,7 @@ public class Encounter {
     private String outcomePositive;
     private String outcomeNegative;
     
-    public Encounter(String description, int difficulty, String attribute, String outcomePositive, String outcomeNegative){
+    public Encounter(String description, int difficulty, String attribute, String outcomePositive, String outcomeNegative) {
         this.attribute = attribute;
         this.description = description;
         this.difficulty = difficulty;
@@ -19,12 +19,12 @@ public class Encounter {
         this.outcomePositive = outcomePositive;
     }
     
-    public String faceEncounter(Hero hero, int roll){
+    public String faceEncounter(Hero hero, int roll) {
         int pcScore = hero.getAttribute(attribute) + roll;
         
-        if(pcScore >= this.difficulty){
+        if (pcScore >= this.difficulty) {
             return this.outcomePositive;
-        } else{
+        } else {
             return this.outcomeNegative;
         }
     }

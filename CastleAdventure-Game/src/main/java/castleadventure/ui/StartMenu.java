@@ -35,7 +35,7 @@ public class StartMenu {
         setCommands(orders);
     }
     
-    public void launch(){
+    public void launch() {
         
         System.out.println("|*********************************************************************************************************|");
         System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa-minus-minus, v0,001");
@@ -92,23 +92,23 @@ public class StartMenu {
     
 //    Prints out the available commands
     
-    public void printCommands(){
-        for (String key : commands.keySet()){
+    public void printCommands() {
+        for (String key : commands.keySet()) {
             System.out.println(key + " | " + commands.get(key));
         }
     }
     
 //    Clears out the current list of commands, and puts in the exit command
     
-    public void clearCommands(){
+    public void clearCommands() {
         commands.clear();
         commands.put("x", "Exit Game");
     }
     
 //    Inserts a list of commands to be used
     
-    public void setCommands(ArrayList<String> orders){
-        for(String command : orders){
+    public void setCommands(ArrayList<String> orders) {
+        for (String command : orders) {
             commands.put(Integer.toString(commands.size()), command);
         }
     }

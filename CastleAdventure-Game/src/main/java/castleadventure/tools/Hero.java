@@ -13,9 +13,9 @@ public class Hero {
     private int willpower;
     private int charisma;
     private String name;
-    private Dice D6 = new Dice(6);
+    private Dice d6 = new Dice(6);
     
-    public Hero(String name){
+    public Hero(String name) {
         this.agility = rollAttribute();
         this.charisma = rollAttribute();
         this.knowledge = rollAttribute();
@@ -34,44 +34,44 @@ public class Hero {
 //------------------------------------------------------------------------------    
     
     
-    public int getPhysique(){
+    public int getPhysique() {
         return this.physique;
     }
     
-    public int getAgility(){
+    public int getAgility() {
         return this.agility;
     }
     
-    public int getKnowledge(){
+    public int getKnowledge() {
         return this.knowledge;
     }
     
-    public int getWillpower(){
+    public int getWillpower() {
         return this.willpower;
     }
     
-    public int getCharisma(){
+    public int getCharisma() {
         return this.charisma;
     }
     
-    public int getHP(){
+    public int getHP() {
         return this.healthPoints;
     }
     
-    public String getName(){
+    public String getName() {
         return this.name;
     }
     
-    public int getAttribute(String attribute){
-        if(attribute.equals("knowledge")){
+    public int getAttribute(String attribute) {
+        if (attribute.equals("knowledge")) {
             return this.knowledge;
-        } else if(attribute.equals("physique")){
+        } else if (attribute.equals("physique")) {
             return this.physique;
-        } else if(attribute.equals("agility")){
+        } else if (attribute.equals("agility")) {
             return this.agility;
-        } else if(attribute.equals("willpower")){
+        } else if (attribute.equals("willpower")) {
             return this.willpower;
-        } else{
+        } else {
             return this.charisma;
         }
             
@@ -81,11 +81,12 @@ public class Hero {
 //==============================================================================    
     
     
-    public int rollAttribute(){
-        return D6.rollDice(3, D6);
+    public int rollAttribute() {
+        return d6.rollDice(3, d6);
     }
     
-    public String toString(){
+    @Override
+    public String toString() {
         return "Character name: " + this.getName() + " | " + "  Health Points: " + this.getHP() + "\n" +
                 "Physique: " + this.getPhysique() + "\n" +
                 "Agility: " + this.getAgility() + "\n" +
