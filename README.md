@@ -8,6 +8,8 @@ Toistaiseksi toteutettu alustava nopanheitto toiminnallisuus, ja hahmon luonti, 
 
 [Työaikakirjanpito](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
 
+[Arkkitehtuurikuvaus](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
