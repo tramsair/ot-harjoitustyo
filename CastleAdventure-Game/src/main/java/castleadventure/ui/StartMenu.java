@@ -20,7 +20,7 @@ public class StartMenu {
     
     public StartMenu(Scanner reader) {
         this.scribe = reader;
-        this.die = new Dice(6);
+        this.die = new Dice();
 
         commands = new TreeMap<>();
         commands.put("x", "Exit");

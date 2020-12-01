@@ -13,7 +13,7 @@ public class Hero {
     private int willpower;
     private int charisma;
     private String name;
-    private Dice d6 = new Dice(6);
+    private Dice d6 = new Dice();
     
     public Hero(String name) {
         this.agility = rollAttribute();

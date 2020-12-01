@@ -10,7 +10,7 @@ public class Dice {
     private Random random;
     
     //Constructor
-    public Dice(int faces) {
+    public Dice() {
         this.random = new Random();
     }
     
@@ -27,6 +27,18 @@ public class Dice {
         while (i <= number) {
             sum = sum + die.rollDie(6);
             i++;
+        }
+        
+        return sum;
+    }
+    
+    public int rollExplodingDie(int faces) {
+        int roll = 1 + random.nextInt(faces);
+        int sum = roll;
+        
+        while (roll == faces && roll != 1) {
+            roll = 1 + random.nextInt(faces);
+            sum = sum + roll;
         }
         
         return sum;
