@@ -33,7 +33,7 @@ public class WorldMap {
                 
         this.hero = new Hero(scribe.nextLine());
         this.map = new ArrayList<Area>();
-        this.buildMap();
+        
                 
         System.out.println();
         System.out.println(hero);
@@ -45,6 +45,7 @@ public class WorldMap {
     }
     
     public void launch() {
+        this.buildMap();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("*A placeholder for the Intro*");
         System.out.println("--------------------------------------------------------------------");
@@ -90,7 +91,7 @@ public class WorldMap {
 //                Rolls for random encounter from the location
                 Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
                 
-                System.out.println(encounter.faceEncounter(hero, die.rollExplodingDie(20)));
+                System.out.println(encounter.faceEncounter(scribe, hero, die.rollExplodingDie(20)));
             }
             
             if (command.equals("2")) {

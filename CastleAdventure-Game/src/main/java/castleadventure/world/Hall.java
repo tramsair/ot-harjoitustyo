@@ -45,8 +45,10 @@ public class Hall extends Area implements AreaInterface {
         this.addCommand("1", "Explore area");
         this.addCommand("2", "Exit through the Doors");
         
-        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder4", "negative placeholder4");
-        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder5", "negative placeholder5");
+        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder4", 
+                "negative placeholder4", "option2", "option2");
+        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder5", 
+                "negative placeholder5", "option2", "option2");
         this.addEncounter(thing);
         this.addEncounter(thing2);
         
