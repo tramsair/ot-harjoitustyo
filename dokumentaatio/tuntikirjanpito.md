@@ -4,4 +4,6 @@ päivä | aika | mitä tein
 | 24.11. |  4   | Pelimaailman rungon luonti, ja pelaajan hahmon ja maailman vuorovaikutuksen alustava implementointi.|
 | 25.11. |  4   | Checkstylen lisäys ja testien laajennus, lisää työtä perustoiminnallisuuteen ja testeihin|
 | 1.12. |  2   | Arkkitehtuuri.md:n teko, kuvauksen laatiminen. Testien laajennusta|
+| 2.12. |  6   | Projektin luokkien uudelleensäätö parempaan järjestykseen ja erilleen käyttöliittymästä|
+| yht. |  21   | 
 
