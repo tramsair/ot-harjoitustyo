@@ -8,53 +8,38 @@ import castleadventure.tools.Dice;
 import castleadventure.tools.Encounter;
 import castleadventure.tools.Hero;
 import castleadventure.world.Area;
+import castleadventure.world.Cortyard;
+import castleadventure.world.Meadow;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WorldMap {
     
-    private Area meadow;
-    private Area cortyard;
+    private ArrayList<Area> map;
     
     private Scanner scribe;
     private Dice die;
     private Hero hero;
     
-    public WorldMap(Scanner reader, Hero hero, Dice die) {
+    public WorldMap(Scanner reader, Dice die) {
         this.scribe = reader;
-        this.hero = hero;
         this.die = die;
         
-//        Area meadow gets built
-//===================================================================================================================
-        this.meadow = new Area();
-        meadow.setDescription("**Placeholder for Meadow Description**");
-        
-        meadow.addCommand("1", "Explore area");
-        meadow.addCommand("2", "Enter trough the gate");
-        
-        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder", "negative placeholder");
-        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder1", "negative placeholder1");
-        meadow.addEncounter(thing);
-        meadow.addEncounter(thing2);
-//---------------------------------------------------------------------------------------------------------------
-//      Area "cortyard" is built
-//===================================================================================================================
-        this.cortyard = new Area();
-        cortyard.setDescription("**Placeholder for Cortyard Description**");
     
-        cortyard.addCommand("1", "Explore area");
-        cortyard.addCommand("2", "Exit trough the gate");
+        System.out.println("");
+        System.out.println("Name your character: ");
+                
+        this.hero = new Hero(scribe.nextLine());
+        this.map = new ArrayList<Area>();
+        this.buildMap();
+                
+        System.out.println();
+        System.out.println(hero);
+        System.out.println("");
         
-        Encounter test = new Encounter("placeholder encounter2", 25, "physique", "positive placeholder2", "negative placeholder2");
-        Encounter test2 = new Encounter("placeholder encounter3", 25, "physique", "positive placeholder3", "negative placeholder3");
-        cortyard.addEncounter(test);
-        cortyard.addEncounter(test2);
-//---------------------------------------------------------------------------------------------------------------
-//          Neighbours are set
-//==================================================================================
-        meadow.addNeighbour(cortyard);
-        cortyard.addNeighbour(meadow);
-    
+        
+        
+
     }
     
     public void launch() {
@@ -63,9 +48,17 @@ public class WorldMap {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("");
         
-        
+//        ====================================
+//        set up the areas of the game
+        for(Area area : this.map) {
+            area.addNeighbour();
+        }
 //        current area starts at Meadow
-        Area currentArea = this.meadow;
+        Area currentArea = this.map.get(0);
+//        ========================================
+        
+        
+        currentArea.arrive(hero);
         
 //        Interface starts here
 //========================================================================================
@@ -95,12 +88,21 @@ public class WorldMap {
 //                Rolls for random encounter from the location
                 Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
                 
-                System.out.println(encounter.faceEncounter(hero, die.rollDie(20)));
+                System.out.println(encounter.faceEncounter(hero, die.rollExplodingDie(20)));
             }
             
             if (command.equals("2")) {
 //                moves to the first neighbour on the list
-                currentArea = currentArea.getNeighbour(0);
+                
+
+                for(Area area : this.map){
+                    if(area.getClass().equals(currentArea.getNeighbour(0).getClass())) {
+                        currentArea = area;
+                        currentArea.arrive(hero);
+                    } else {
+                        System.out.println("Placeholder indicator Error");
+                    }
+                }
             }
 
             if (command.equals("c")) {
@@ -119,5 +121,10 @@ public class WorldMap {
         for (String key : area.getCommands().keySet()) {
             System.out.println(key + " | " + area.getCommands().get(key));
         }
+    }
+    
+    public void buildMap(){
+        this.map.add(new Meadow());
+        this.map.add(new Cortyard());
     }
 }

@@ -85,6 +85,16 @@ public class Hero {
         return d6.rollDice(3, d6);
     }
     
+    public boolean takeHit() {
+        this.healthPoints--;
+        
+        if(this.healthPoints <= 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     @Override
     public String toString() {
         return "Character name: " + this.getName() + " | " + "  Health Points: " + this.getHP() + "\n" +

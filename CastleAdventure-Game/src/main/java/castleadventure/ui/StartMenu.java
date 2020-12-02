@@ -38,7 +38,7 @@ public class StartMenu {
     public void launch() {
         
         System.out.println("|*********************************************************************************************************|");
-        System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa-minus-minus, v0,001");
+        System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa, v0,002");
         System.out.println("|*********************************************************************************************************|");
 
         
@@ -71,17 +71,10 @@ public class StartMenu {
             
             if (command.equals("2")) {
                 System.out.println("The story begins...");
-                System.out.println("");
-                System.out.println("Name your character: ");
                 
-                Hero hero = new Hero(scribe.nextLine());
-                
-                System.out.println();
-                System.out.println(hero);
-                System.out.println("");
                 
 //                initializing the game
-                WorldMap map = new WorldMap(this.scribe, hero, die);
+                WorldMap map = new WorldMap(this.scribe, die);
                 
                 map.launch();
                    
