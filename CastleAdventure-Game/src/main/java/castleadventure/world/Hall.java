@@ -8,8 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class Cortyard extends Area implements AreaInterface{
-    
+public class Hall extends Area implements AreaInterface {
     
     String description;
     private ArrayList<Area> neighbours;
@@ -18,19 +17,18 @@ public class Cortyard extends Area implements AreaInterface{
     private Hero hero;
     private String name;
 
-    public Cortyard() {
+    public Hall() {
         this.description = "";
         this.encounters = new ArrayList();
         this.commands = new TreeMap<>();
         this.neighbours = new ArrayList();
         this.hero = new Hero("");
-        this.name = "Cortyard";
+        this.name = "Hall";
     }    
     
     @Override
     public void addNeighbour() {
-        this.neighbours.add(new Meadow());
-        this.neighbours.add(new Hall());
+        this.neighbours.add(new Cortyard());
     }
     
     @Override
@@ -42,14 +40,13 @@ public class Cortyard extends Area implements AreaInterface{
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Cortyard Description**");
+        this.setDescription("**Placeholder for Hall Description**");
         
         this.addCommand("1", "Explore area");
-        this.addCommand("2", "Exit through the gate");
-        this.addCommand("3", "Enter the main doors");
+        this.addCommand("2", "Exit through the Doors");
         
-        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder2", "negative placeholder2");
-        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder3", "negative placeholder3");
+        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder4", "negative placeholder4");
+        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder5", "negative placeholder5");
         this.addEncounter(thing);
         this.addEncounter(thing2);
         

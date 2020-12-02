@@ -9,6 +9,7 @@ import castleadventure.tools.Encounter;
 import castleadventure.tools.Hero;
 import castleadventure.world.Area;
 import castleadventure.world.Cortyard;
+import castleadventure.world.Hall;
 import castleadventure.world.Meadow;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,6 +21,7 @@ public class WorldMap {
     private Scanner scribe;
     private Dice die;
     private Hero hero;
+    private Area currentArea;
     
     public WorldMap(Scanner reader, Dice die) {
         this.scribe = reader;
@@ -54,7 +56,7 @@ public class WorldMap {
             area.addNeighbour();
         }
 //        current area starts at Meadow
-        Area currentArea = this.map.get(0);
+        this.currentArea = this.map.get(0);
 //        ========================================
         
         
@@ -94,15 +96,15 @@ public class WorldMap {
             if (command.equals("2")) {
 //                moves to the first neighbour on the list
                 
-
-                for(Area area : this.map){
-                    if(area.getClass().equals(currentArea.getNeighbour(0).getClass())) {
-                        currentArea = area;
-                        currentArea.arrive(hero);
-                    } else {
-                        System.out.println("Placeholder indicator Error");
-                    }
-                }
+                this.move(0);
+            
+            }
+            
+            if (command.equals("3")) {
+//                moves to the second neighbour on the list
+                
+                this.move(1);
+                
             }
 
             if (command.equals("c")) {
@@ -123,8 +125,21 @@ public class WorldMap {
         }
     }
     
-    public void buildMap(){
+    public void buildMap() {
         this.map.add(new Meadow());
         this.map.add(new Cortyard());
+        this.map.add(new Hall());
+    }
+    
+    public void move(int number) {
+        for(Area area : this.map){
+            if(area.getClass().equals(this.currentArea.getNeighbour(number).getClass())) {
+                this.currentArea = area;
+                this.currentArea.arrive(hero);
+            } else {
+                System.out.println("Placeholder indicator Error");
+            }
+        }
+    
     }
 }
