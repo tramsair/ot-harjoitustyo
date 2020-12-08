@@ -4,6 +4,9 @@ Pieni linnaseikkailu roolipeli.
 Toistaiseksi toteutettu alustava nopanheitto toiminnallisuus, ja hahmon luonti, sekä hyvin alustava tekstikäyttöliittymä.
 
 ## Dokumentaatio
+
+[Vaatimusmäärittely](https://github.com/tramsair/ot-harjoitustyo/dokumentaatio/kayttoohje.md)
+
 [Vaatimusmäärittely](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
 [Työaikakirjanpito](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/tuntikirjanpito.md)
