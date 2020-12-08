@@ -62,4 +62,11 @@
                 <goal>checkstyle:checkstyle</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-tee jari</actionName>
+            <displayName>tee jari</displayName>
+            <goals>
+                <goal>package</goal>
+            </goals>
+        </action>
     </actions>
