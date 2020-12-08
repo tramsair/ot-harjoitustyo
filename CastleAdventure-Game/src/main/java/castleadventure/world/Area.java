@@ -24,11 +24,15 @@ public class Area implements AreaInterface {
         this.encounters = new ArrayList();
         this.commands = new TreeMap<>();
         this.neighbours = new ArrayList();
+        this.name = "";
         
     }
     
 //    -----------------------------------------------------------------
 //    setters and adders
+    public void setName(String name){
+        this.name = name;
+    }
     
     @Override
     public void setDescription(String story) {

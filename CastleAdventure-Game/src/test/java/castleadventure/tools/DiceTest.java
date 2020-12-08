@@ -55,9 +55,9 @@ public class DiceTest {
     @Test
     public void MultiDiceRollRightSize(){
         int i = 1;
-        while(i <= 10){
+        while(i <= 1000){
             int x = die.rollDice(3, die);
-            assertTrue(x <= 18 && x > 3);
+            assertTrue(x <= 18 && x >= 3);
             
             i++;
         }

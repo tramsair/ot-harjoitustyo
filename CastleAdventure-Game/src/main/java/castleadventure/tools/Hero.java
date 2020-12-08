@@ -32,7 +32,7 @@ public class Hero {
    
     
 //------------------------------------------------------------------------------
-//          Getters
+//          Getters and setters
 //------------------------------------------------------------------------------    
     
     
@@ -77,6 +77,10 @@ public class Hero {
             return this.charisma;
         }
             
+    }
+    
+    public void setHp(int hp) {
+        this.healthPoints = hp;
     }
     
 //              Getters end

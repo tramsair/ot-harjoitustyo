@@ -64,7 +64,7 @@ public class Encounter {
     public String faceEncounter(Hero hero, int roll, String action) {       
         
         
-        if (action.equals(this.commands.get("1"))) {
+        if (action.equals("1")) {
             if (hero.getAttribute(this.attribute) + roll >= this.difficulty) {
                 return this.outcomePositive;
             } else {

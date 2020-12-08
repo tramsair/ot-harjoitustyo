@@ -69,4 +69,11 @@
                 <goal>package</goal>
             </goals>
         </action>
+        <action>
+            <actionName>CUSTOM-JavaDogit</actionName>
+            <displayName>JavaDogit</displayName>
+            <goals>
+                <goal>javadoc:javadoc</goal>
+            </goals>
+        </action>
     </actions>

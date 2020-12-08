@@ -30,7 +30,9 @@ public class Meadow extends Area implements AreaInterface {
     
     @Override
     public void addNeighbour() {
-        this.neighbours.add(new Cortyard());
+        Cortyard cortyard = new Cortyard();
+        cortyard.setName("Cortyard");
+        this.neighbours.add(cortyard);
     }
     
     @Override
