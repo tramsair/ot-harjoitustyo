@@ -1,4 +1,6 @@
-
+/**
+ * A template for the game's different areas. Never directly used by itself, but the actual areas extend this class
+ */
 package castleadventure.world;
 
 import castleadventure.tools.Encounter;
@@ -71,23 +73,36 @@ public class Area implements AreaInterface {
         return this.neighbours.get(index);
     }
     
-//    ---------------------------------------------------------------------
-    
-    @Override
-    public Encounter randomEncounter(int number) {
-        return encounters.get(number - 1);
-    }
-
-    @Override
-    public void arrive(Hero hero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     @Override
     public String getName() {
         return this.name;
 
     }
+    
+//    ---------------------------------------------------------------------
+    
+    /**
+     * Method Selects an encounter from the area's encounters
+     * 
+     * @param number index for the encounter selected
+     * @return the selected encounter
+     */
+    @Override
+    public Encounter randomEncounter(int number) {
+        return encounters.get(number - 1);
+    }
+
+    /**
+     * A template for initializing the are for the player character
+     * 
+     * @param hero player character entering the area
+     */
+    @Override
+    public void arrive(Hero hero) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
     
     
 

@@ -1,8 +1,10 @@
-
+/**
+ * Representation of the player, the player character. The game will use the 
+ * attributes with dice rolls to find out if the succeeds or fails to overcome 
+ * any challenges they fail.
+ */
 package castleadventure.tools;
 
-//Representation of the player, the player charater. The game will use the attributes with dice rolls to find out if the 
-//succeeds or fails to overcome any challenges they fail.
 
 public class Hero {
     
@@ -80,11 +82,21 @@ public class Hero {
 //              Getters end
 //==============================================================================    
     
+/**
+ * Rolls the value for a single attribute,
+ * 
+ * @return sum of three six-sided dice
+ */
     
     public int rollAttribute() {
         return d6.rollDice(3, d6);
     }
-    
+/**
+ * Metod deducts one hitpoint from the character, and checks if the character 
+ * has gone to 0 hitpoints
+ * 
+ * @return boolean depending on if the character is at 0 hp or not
+ */
     public boolean takeHit() {
         this.healthPoints--;
         

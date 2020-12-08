@@ -1,4 +1,6 @@
-
+/**
+ * The "out-of-Game" menu, handling any actions outside the gameplay
+ */
 package castleadventure.ui;
 
 import castleadventure.tools.Dice;
@@ -35,7 +37,9 @@ public class StartMenu {
 //        Inserts the command list into the command map
         setCommands(orders);
     }
-    
+/**
+ * The "main menu", allows player to start a new game, or do other "out-of-game" commands
+ */
     public void launch() {
         
         this.printTitle();
@@ -50,30 +54,41 @@ public class StartMenu {
 
         }
     }
-    
-//    Prints out the available commands
-    
+       
+/**
+ * Prints out the available commands
+ */    
     public void printCommands() {
         for (String key : commands.keySet()) {
             System.out.println(key + " | " + commands.get(key));
         }
     }
     
-//    Clears out the current list of commands, and puts in the exit command
-    
+ 
+/**
+ * Clears out the current list of commands, and puts in the exit command
+ */    
     public void clearCommands() {
         commands.clear();
         commands.put("x", "Exit Game");
     }
     
-//    Inserts a list of commands to be used
-    
+
+/**
+ * Inserts a list of commands to be used
+ */    
     public void setCommands(ArrayList<String> orders) {
         for (String command : orders) {
             commands.put(Integer.toString(commands.size()), command);
         }
     }
     
+/**
+ * Runs the command loop, offering and solving commands from the user. 
+ * 
+ * @param command command given by the user
+ * 
+ */    
     public void commandsLoop(String command) {
                    
 //            Error message for invalid commands by user
@@ -103,6 +118,9 @@ public class StartMenu {
         }
     }
     
+/**
+ * prints out the menu text for the interface
+ */    
     public void printMenu() {
         System.out.println("---------");
         System.out.println("Main Menu");
@@ -114,6 +132,10 @@ public class StartMenu {
         System.out.println("Choose Command: ");
     }
     
+    
+/**
+ * prints out the title blurp
+ */    
     public void printTitle() {
         System.out.println("|*********************************************************************************************************|");
         System.out.println("Welcome to Silent Château(working name) interface test preliminary iteration alfa, v0,03");

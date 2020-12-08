@@ -1,7 +1,8 @@
-
+/**
+ * This class will represent the hardships and problems the player character will encounter, from enemies to locked doors
+ */
 package castleadventure.tools;
 
-//This class will represent the hardships and problems the player character wil lencounter, from enemies to locked doors
 
 import java.util.Map;
 import java.util.Scanner;
@@ -47,6 +48,19 @@ public class Encounter {
     
 //    Encountering the Encounters
 //    =====================================
+    
+ /**
+ * Method solves an encounter for the player character depending on the 
+ * sum of the value of a roll and appropriate charactersitic.
+ *
+ * @param hero player's character
+ *
+ * @param roll value of a dice roll made outside the method
+ * 
+ * @param action player's cinput on the choice between two actions
+ * 
+ * @return message of failure or succeesse depending on the comparison result
+ */
     public String faceEncounter(Hero hero, int roll, String action) {       
         
         
@@ -65,7 +79,19 @@ public class Encounter {
         }
         
     }
-
+/**
+ * Same as above, but for a dangerous encounter. Failing this encounter will
+ * deduct one hitpoint from the character. If character reaches 0 hit points, 
+ * the method will return a special game over message.
+ *
+ * @param hero player's character
+ *
+ * @param roll value of a dice roll made outside the method
+ * 
+ * @param action player's cinput on the choice between two actions
+ * 
+ * @return message of failure or succeesse depending on the comparison result
+ */
     public String faceDeadlyEncounter(Hero hero, int roll, String action) {
 
         

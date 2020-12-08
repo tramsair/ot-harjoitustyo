@@ -1,8 +1,10 @@
-
+/**
+ * This class will create and handle the different Areas of the game, and serve
+ * as the gameplay UI
+ */
 package castleadventure.ui;
 
-// This class will create and handle the different Areas of the game, and serve
-//as the gameplay UI
+
 
 import castleadventure.tools.Dice;
 import castleadventure.tools.Encounter;
@@ -25,28 +27,33 @@ public class WorldMap {
     private boolean gameOver;
     private boolean run;
     
+/**
+ * The constructor for the main in-game UI. It also creates the player character, 
+ * naming it according to input from the user and prints out the ready character.
+ */    
+    
     public WorldMap(Scanner reader, Dice die) {
         this.scribe = reader;
         this.die = die;
         this.gameOver = false;
         
-    
         System.out.println("");
         System.out.println("Name your character: ");
                 
         this.hero = new Hero(scribe.nextLine());
         this.map = new ArrayList<Area>();
-        
-                
+               
         System.out.println();
         System.out.println(hero);
         System.out.println("");
-        
-        
-        
-
     }
     
+    
+/**
+ * Starts the main in-game interface which takes orders from the user and solves 
+ * them. Also allows for return to the "main menu", or returns the user there 
+ * automatically if "game over" is reached.
+ */    
     public void launch() {
         this.initializeGame();
         
@@ -69,6 +76,10 @@ public class WorldMap {
 //    -----------------------------------------------------------------
     }
     
+/**
+ * Method generates the game world and places the player character in the first 
+ * area.
+ */
     public void initializeGame() {
         this.buildMap();
         
@@ -87,21 +98,28 @@ public class WorldMap {
         currentArea.arrive(hero);
     }
     
-    //    Prints out the current area's commands
-    
+/**
+ * Method prints out the commands available on the area the player character is at.
+ */
     public void printCommands(Area area) {
         for (String key : area.getCommands().keySet()) {
             System.out.println(key + " | " + area.getCommands().get(key));
         }
     }
     
-//    Previous for the encounters
+/**
+ * Method prints out the commands available for the player regarding facing the 
+ * current encounter
+ */
     public void printActions(Encounter challenge) {
         for (String key : challenge.getCommands().keySet()) {
             System.out.println(key + " | " + challenge.getCommands().get(key));
         }
     }
     
+/**
+ * Method prints out the intro of the game
+ */
     public void printIntro() {
         System.out.println("--------------------------------------------------------------------");
         System.out.println("*A placeholder for the Intro*");
@@ -109,7 +127,11 @@ public class WorldMap {
         System.out.println("");
     }
     
-//    prints out the character sheet
+/**
+ * Method Prints out the character sheet of the player character
+ * 
+ * @param hero the player character
+ */
     public void showCharacter(Hero hero) {
         System.out.println("_____________________________________________");
         System.out.println(hero);
@@ -117,15 +139,27 @@ public class WorldMap {
         System.out.println("");
     }
     
-//    initializes the world map
+/**
+ * Method adds the different game areas into the list that consists of the game's
+ * "map".
+ */
     public void buildMap() {
         this.map.add(new Meadow());
         this.map.add(new Cortyard());
         this.map.add(new Hall());
     }
     
+  
 //    Moves the active area to the indicated neighbour #BUG NOTE: For some reason
 //    it is currently impossible to move back to the Meadow area.
+/**
+ * Method moves the active area to the indicated neighbour
+ * #BUG NOTE: For yet unkown reason the method does not allow mowing back to the 
+ * first area, "Meadow"
+ * 
+ * @param number input from the user, specifies to which of the neighboring areas 
+ * the player character moves
+ */
     public void move(int number) {
         for (Area area : this.map) {
             if (area.getClass().equals(this.currentArea.getNeighbour(number).getClass())) {
@@ -146,10 +180,12 @@ public class WorldMap {
     
     }
     
+/**
+ * Selects and solves an encounter from the current area against the player character
+ * 
+ * @param challenge the Encounter the player character is facing.
+ */    
     public void challenge(Encounter challenge) {
-        
-        Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
-        System.out.println(encounter.getDescription());
         
         System.out.println("What do you do? ");
         System.out.println("");
@@ -165,6 +201,11 @@ public class WorldMap {
         }   
     }
     
+/**
+ * Method asks user for a command and solves the encounter accordingly
+ * 
+ * @param challenge the encounter currently being faced by the player character 
+ */    
     public void challengeLoop(Encounter challenge) {
         
         String command = scribe.nextLine();
@@ -187,6 +228,11 @@ public class WorldMap {
         }
     }
 
+/**
+ * Method is the loop that forms the core of the in-game menu and interface, 
+ * resolving commands given by the user
+ * @param command user's command regarding on the proceeding within the game
+ */
     public void launchLoop(String command) {
         
                     

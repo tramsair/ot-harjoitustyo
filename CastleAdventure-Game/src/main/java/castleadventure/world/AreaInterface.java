@@ -1,4 +1,6 @@
-
+/**
+ * Interface for the different gameplay areas of the game
+ */
 package castleadventure.world;
 
 import castleadventure.tools.Encounter;

@@ -1,4 +1,6 @@
-
+/**
+ * Class representing the first gameplay area, the one the player character starts from
+ */
 package castleadventure.world;
 
 import castleadventure.tools.Encounter;
