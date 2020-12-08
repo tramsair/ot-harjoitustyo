@@ -38,7 +38,7 @@ public class StartMenu {
     public void launch() {
         
         System.out.println("|*********************************************************************************************************|");
-        System.out.println("Welcome to CastleAdventure(working name) interface test preliminary iteration alfa, v0,002");
+        System.out.println("Welcome to Silent Château(working name) interface test preliminary iteration alfa, v0,03");
         System.out.println("|*********************************************************************************************************|");
 
         

@@ -3,7 +3,9 @@ package castleadventure.tools;
 
 //This class will represent the hardships and problems the player character wil lencounter, from enemies to locked doors
 
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 
 
@@ -12,74 +14,103 @@ public class Encounter {
     private String description;
     private int difficulty;
     private String attribute;
+    private String altAttribute;
     private String outcomePositive;
     private String outcomeNegative;
+    private String otherOutcomePositive;
+    private String otherOutcomeNegative;
     private String criticalFailure;
-    private String choiceOne;
-    private String choiceTwo;
+    private Map<String, String> commands;
+    private boolean deadly;
     
-    public Encounter(String description, int difficulty, String attribute, String outcomePositive, 
-            String outcomeNegative, String one, String two) {
-        this.attribute = attribute;
-        this.description = description;
-        this.difficulty = difficulty;
-        this.outcomeNegative = outcomeNegative;
-        this.outcomePositive = outcomePositive;
-        this.choiceOne = one;
-        this.choiceTwo = two;
+    public Encounter(String description, int difficulty, String attribute, String altAttribute, 
+            String positive, String negative, String otherPositive, String otherNegative, 
+            boolean death, String criticalFailure, String one, String two) {
         
-    }
-    
-    public Encounter(String description, int difficulty, String attribute, String outcomePositive, 
-            String outcomeNegative, String criticalFailure, String one, String two) {
-        this.attribute = attribute;
+        this.commands = new TreeMap<>();
         this.description = description;
         this.difficulty = difficulty;
-        this.outcomeNegative = outcomeNegative;
-        this.outcomePositive = outcomePositive;
+        this.attribute = attribute;
+        this.altAttribute = altAttribute;
+        this.outcomePositive = positive;
+        this.outcomeNegative = negative;
+        this.otherOutcomePositive = otherPositive;
+        this.otherOutcomeNegative = otherNegative;
+        this.deadly = death;
         this.criticalFailure = criticalFailure;
-        this.choiceOne = one;
-        this.choiceTwo = two;
+        
+        this.commands.put("1", one);
+        this.commands.put("2", two);
         
     }
     
     
 //    Encountering the Encounters
 //    =====================================
-    public String faceEncounter(Scanner scribe, Hero hero, int roll) {
-        System.out.println(this.description);
-        System.out.println(this.choiceOne);
-        System.out.println(this.choiceTwo);        
-        
-        int pcScore = hero.getAttribute(this.attribute) + roll;
-        
-        if (pcScore >= this.difficulty) {
-            return this.outcomePositive;
-        } else {
-            return this.outcomeNegative;
-
-        }
-    }
-    
-    public String faceDeadlyEncounter(Scanner scribe, Hero hero, int roll) {
-        System.out.println(this.description);
-        System.out.println(this.choiceOne);
-        System.out.println(this.choiceTwo);
-        
-        int pcScore = hero.getAttribute(this.attribute) + roll;
+    public String faceEncounter(Hero hero, int roll, String action) {       
         
         
-        
-        if (pcScore >= this.difficulty) {
-            return this.outcomePositive;
-        } else {
-            if(hero.takeHit()){
-                return this.criticalFailure;
-                
-                
+        if(action.equals(this.commands.get("1"))){
+            if (hero.getAttribute(this.attribute) + roll >= this.difficulty) {
+                return this.outcomePositive;
             } else {
                 return this.outcomeNegative;
             }
+        } else {
+            if (hero.getAttribute(this.altAttribute) + roll >= this.difficulty) {
+                return this.otherOutcomePositive;
+            } else {
+                return this.otherOutcomeNegative;
+            }
         }
+        
+    }
+
+    public String faceDeadlyEncounter(Hero hero, int roll, String action) {
+
+        if(action.equals("1")){
+            if (hero.getAttribute(this.attribute) + roll >= this.difficulty) {
+                return this.outcomePositive;
+                
+            } else {
+//                cheking if hero dies
+                if(hero.takeHit()){
+                return this.criticalFailure;
+
+                } else {
+                    return this.outcomeNegative;
+                }
+            }
+        } else {
+            if (hero.getAttribute(this.altAttribute) + roll >= this.difficulty) {
+                return this.otherOutcomePositive;
+            } else {
+//                cheking if hero dies
+                if(hero.takeHit()){
+                return this.criticalFailure;
+
+                } else {
+                    return this.otherOutcomeNegative;
+                }
+            }
+        }
+    }
+//    Getters and setters and such utility
+//    ===================================================
+
+    public String getDescription(){
+        return this.description;
+    }
+    
+    public Map<String, String> getCommands() {
+        return this.commands;
+    }
+    
+    public void addCommand(String number, String command) {
+        this.commands.put(number, command);
+    }
+    
+    public boolean isDeadly(){
+        return this.deadly;
     }
 }

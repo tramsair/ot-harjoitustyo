@@ -22,7 +22,7 @@ public class Hero {
         this.physique = rollAttribute();
         this.willpower = rollAttribute();
         
-        this.healthPoints = 10;
+        this.healthPoints = 2;
         this.name = name;
     }
     

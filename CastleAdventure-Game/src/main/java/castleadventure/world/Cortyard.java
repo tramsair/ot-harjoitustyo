@@ -51,10 +51,17 @@ public class Cortyard extends Area implements AreaInterface {
         this.addCommand("2", "Exit through the gate");
         this.addCommand("3", "Enter through the main doors");
         
-        Encounter thing = new Encounter("placeholder encounter", 25, "agility", "positive placeholder2", 
-                "negative placeholder2", "option2", "option2");
-        Encounter thing2 = new Encounter("placeholder encounter1", 25, "agility", "positive placeholder3", 
-                "negative placeholder3", "option2", "option2");
+//        Fill encounter in order: description, difficulty, attribute, other Attribute, 
+//            positive outcome, negative outcome, otherPositive, otherNegative, 
+//            is it deadly?, death message(leave empty if not deadly), action one, action two two
+        
+        Encounter thing = new Encounter("placeholder description", 25, "physique", "finesse", 
+                "placeholder success", "placeholder failure", "placeholder other success", 
+                "placeholder other failure", true, "you are dead", "fight", "run away");
+        Encounter thing2 = new Encounter("placeholder description2", 25, "charisma", "willpower", 
+                "placeholder success", "placeholder failure", "placeholder other success", 
+                "placeholder other failure", false, "", "convince", "intimidate");
+        
         this.addEncounter(thing);
         this.addEncounter(thing2);
     }

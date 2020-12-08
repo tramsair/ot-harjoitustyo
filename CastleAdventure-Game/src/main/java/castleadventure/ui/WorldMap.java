@@ -22,10 +22,12 @@ public class WorldMap {
     private Dice die;
     private Hero hero;
     private Area currentArea;
+    private boolean GameOver;
     
     public WorldMap(Scanner reader, Dice die) {
         this.scribe = reader;
         this.die = die;
+        this.GameOver = false;
         
     
         System.out.println("");
@@ -65,7 +67,7 @@ public class WorldMap {
         
 //        Interface starts here
 //========================================================================================
-        while (true) {
+        while (!this.GameOver) {
             currentArea.addCommand("x", "Return to Main Menu");
             currentArea.addCommand("c", "View Character");
             
@@ -91,7 +93,7 @@ public class WorldMap {
 //                Rolls for random encounter from the location
                 Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
                 
-                System.out.println(encounter.faceEncounter(scribe, hero, die.rollExplodingDie(20)));
+                this.challenge(encounter);
             }
             
             if (command.equals("2")) {
@@ -126,6 +128,13 @@ public class WorldMap {
         }
     }
     
+//    Previous for the encounters
+    public void printActions(Encounter challenge) {
+        for (String key : challenge.getCommands().keySet()) {
+            System.out.println(key + " | " + challenge.getCommands().get(key));
+        }
+    }
+    
     public void buildMap() {
         this.map.add(new Meadow());
         this.map.add(new Cortyard());
@@ -142,5 +151,45 @@ public class WorldMap {
             }
         }
     
+    }
+    
+    public void challenge(Encounter challenge){
+        
+        Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
+        System.out.println(encounter.getDescription());
+        
+        System.out.println("What do you do? ");
+        System.out.println("");
+        this.printActions(challenge);
+            
+        
+//        interface takes players choice of action
+        while (true) {
+            
+            String command = scribe.nextLine();
+        
+            
+            if (!challenge.getCommands().keySet().contains(command)) {
+                System.out.println("Invalid command");
+                
+            } else {
+            
+                if(challenge.isDeadly()) {
+                    System.out.println(challenge.faceDeadlyEncounter(hero, this.die.rollExplodingDie(20), command));
+                    if(this.hero.getHP() <= 0){
+                        this.GameOver = true;
+                    }
+                    break;
+                } else {
+                    System.out.println(challenge.faceEncounter(hero, this.die.rollExplodingDie(20), command));
+                    break;
+                }
+            }
+            
+            
+        }
+                
+        
+        
     }
 }
