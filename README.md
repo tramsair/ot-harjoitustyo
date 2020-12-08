@@ -13,6 +13,11 @@ Toistaiseksi toteutettu alustava nopanheitto toiminnallisuus, ja hahmon luonti, 
 
 [Arkkitehtuurikuvaus](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
 
+## Releaset
+
+[Viikko 6](https://github.com/tramsair/ot-harjoitustyo/releases/tag/viikko6)
+
+
 ## Komentorivitoiminnot
 
 ### Testaus
