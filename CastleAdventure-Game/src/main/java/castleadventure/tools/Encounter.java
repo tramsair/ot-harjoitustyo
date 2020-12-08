@@ -50,7 +50,7 @@ public class Encounter {
     public String faceEncounter(Hero hero, int roll, String action) {       
         
         
-        if(action.equals(this.commands.get("1"))){
+        if (action.equals(this.commands.get("1"))) {
             if (hero.getAttribute(this.attribute) + roll >= this.difficulty) {
                 return this.outcomePositive;
             } else {
@@ -68,14 +68,15 @@ public class Encounter {
 
     public String faceDeadlyEncounter(Hero hero, int roll, String action) {
 
-        if(action.equals("1")){
+        
+        if (action.equals("1")) {
             if (hero.getAttribute(this.attribute) + roll >= this.difficulty) {
                 return this.outcomePositive;
                 
             } else {
 //                cheking if hero dies
-                if(hero.takeHit()){
-                return this.criticalFailure;
+                if (hero.takeHit()) {
+                    return this.criticalFailure;
 
                 } else {
                     return this.outcomeNegative;
@@ -86,8 +87,8 @@ public class Encounter {
                 return this.otherOutcomePositive;
             } else {
 //                cheking if hero dies
-                if(hero.takeHit()){
-                return this.criticalFailure;
+                if (hero.takeHit()) {
+                    return this.criticalFailure;
 
                 } else {
                     return this.otherOutcomeNegative;
@@ -98,7 +99,7 @@ public class Encounter {
 //    Getters and setters and such utility
 //    ===================================================
 
-    public String getDescription(){
+    public String getDescription() {
         return this.description;
     }
     
@@ -110,7 +111,7 @@ public class Encounter {
         this.commands.put(number, command);
     }
     
-    public boolean isDeadly(){
+    public boolean isDeadly() {
         return this.deadly;
     }
 }

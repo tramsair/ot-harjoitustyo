@@ -88,7 +88,7 @@ public class Hero {
     public boolean takeHit() {
         this.healthPoints--;
         
-        if(this.healthPoints <= 0) {
+        if (this.healthPoints <= 0) {
             return true;
         } else {
             return false;

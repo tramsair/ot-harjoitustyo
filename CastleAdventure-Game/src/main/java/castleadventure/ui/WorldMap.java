@@ -22,12 +22,13 @@ public class WorldMap {
     private Dice die;
     private Hero hero;
     private Area currentArea;
-    private boolean GameOver;
+    private boolean gameOver;
+    private boolean run;
     
     public WorldMap(Scanner reader, Dice die) {
         this.scribe = reader;
         this.die = die;
-        this.GameOver = false;
+        this.gameOver = false;
         
     
         System.out.println("");
@@ -47,15 +48,35 @@ public class WorldMap {
     }
     
     public void launch() {
+        this.initializeGame();
+        
+//        Interface starts here
+//========================================================================================
+        while (!this.gameOver) {
+            currentArea.addCommand("x", "Return to Main Menu");
+            currentArea.addCommand("c", "View Character");
+        
+            System.out.println(currentArea.getDescription());
+            System.out.println("");
+            printCommands(currentArea);
+            System.out.println();
+            System.out.println("Select Action: ");
+        
+            String command = scribe.nextLine();
+            
+            this.launchLoop(command);
+        }
+//    -----------------------------------------------------------------
+    }
+    
+    public void initializeGame() {
         this.buildMap();
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("*A placeholder for the Intro*");
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("");
+        
+        this.printIntro();
         
 //        ====================================
 //        set up the areas of the game
-        for(Area area : this.map) {
+        for (Area area : this.map) {
             area.addNeighbour();
         }
 //        current area starts at Meadow
@@ -64,61 +85,7 @@ public class WorldMap {
         
         
         currentArea.arrive(hero);
-        
-//        Interface starts here
-//========================================================================================
-        while (!this.GameOver) {
-            currentArea.addCommand("x", "Return to Main Menu");
-            currentArea.addCommand("c", "View Character");
-            
-            System.out.println(currentArea.getDescription());
-            System.out.println("");
-            printCommands(currentArea);
-            System.out.println();
-            System.out.println("Select Action: ");
-            
-            String command = scribe.nextLine();
-                    
-            if (!currentArea.getCommands().keySet().contains(command)) {
-                System.out.println("Invalid command");
-                printCommands(currentArea);
-            }
-
-            if (command.equals("x")) {
-                System.out.println("Returning to menu...");
-                break;
-            }
-            
-            if (command.equals("1")) {
-//                Rolls for random encounter from the location
-                Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
-                
-                this.challenge(encounter);
-            }
-            
-            if (command.equals("2")) {
-//                moves to the first neighbour on the list
-                
-                this.move(0);
-            
-            }
-            
-            if (command.equals("3")) {
-//                moves to the second neighbour on the list
-                
-                this.move(1);
-                
-            }
-
-            if (command.equals("c")) {
-                System.out.println("_____________________________________________");
-                System.out.println(hero);
-                System.out.println("_____________________________________________");
-                System.out.println("");
-            }
-        }
     }
-//    -----------------------------------------------------------------
     
     //    Prints out the current area's commands
     
@@ -135,25 +102,51 @@ public class WorldMap {
         }
     }
     
+    public void printIntro() {
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("*A placeholder for the Intro*");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("");
+    }
+    
+//    prints out the character sheet
+    public void showCharacter(Hero hero) {
+        System.out.println("_____________________________________________");
+        System.out.println(hero);
+        System.out.println("_____________________________________________");
+        System.out.println("");
+    }
+    
+//    initializes the world map
     public void buildMap() {
         this.map.add(new Meadow());
         this.map.add(new Cortyard());
         this.map.add(new Hall());
     }
     
+//    Moves the active area to the indicated neighbour #BUG NOTE: For some reason
+//    it is currently impossible to move back to the Meadow area.
     public void move(int number) {
-        for(Area area : this.map){
-            if(area.getClass().equals(this.currentArea.getNeighbour(number).getClass())) {
+        for (Area area : this.map) {
+            if (area.getClass().equals(this.currentArea.getNeighbour(number).getClass())) {
+                
+//  Rolls for a random chance to face and encounter on the way to new area
+                if (this.die.rollDie(6) == 1) {
+                    Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
+                
+                    this.challenge(encounter);
+                }
                 this.currentArea = area;
                 this.currentArea.arrive(hero);
             } else {
+//      Developement indicator that the program goes trough the list properly
                 System.out.println("Placeholder indicator Error");
             }
         }
     
     }
     
-    public void challenge(Encounter challenge){
+    public void challenge(Encounter challenge) {
         
         Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
         System.out.println(encounter.getDescription());
@@ -161,35 +154,67 @@ public class WorldMap {
         System.out.println("What do you do? ");
         System.out.println("");
         this.printActions(challenge);
-            
+        
+        this.run = true;
         
 //        interface takes players choice of action
-        while (true) {
+        while (run == true) {
             
-            String command = scribe.nextLine();
+            this.challengeLoop(challenge);
+            
+        }   
+    }
+    
+    public void challengeLoop(Encounter challenge) {
         
-            
-            if (!challenge.getCommands().keySet().contains(command)) {
-                System.out.println("Invalid command");
+        String command = scribe.nextLine();
+        
+        if (!challenge.getCommands().keySet().contains(command)) {
+            System.out.println("Invalid command");
                 
-            } else {
+        } else {
             
-                if(challenge.isDeadly()) {
-                    System.out.println(challenge.faceDeadlyEncounter(hero, this.die.rollExplodingDie(20), command));
-                    if(this.hero.getHP() <= 0){
-                        this.GameOver = true;
-                    }
-                    break;
-                } else {
-                    System.out.println(challenge.faceEncounter(hero, this.die.rollExplodingDie(20), command));
-                    break;
+            if (challenge.isDeadly()) {
+                System.out.println(challenge.faceDeadlyEncounter(hero, this.die.rollExplodingDie(20), command));
+                if (this.hero.getHP() <= 0) {
+                    this.gameOver = true;
                 }
+                this.run = false;
+            } else {
+                System.out.println(challenge.faceEncounter(hero, this.die.rollExplodingDie(20), command));
+                this.run = false;
             }
-            
-            
         }
+    }
+
+    public void launchLoop(String command) {
+        
+                    
+//            Error message for invalid commands by user
+        if (!currentArea.getCommands().keySet().contains(command)) {
+            System.out.println("Invalid command");
+            
+        } else if (command.equals("x")) {
+            System.out.println("Returning to menu...");
+            this.gameOver = true;
+            
+        } else if (command.equals("1")) {
+//            Rolls for random encounter from the location
+            Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
                 
-        
-        
+            this.challenge(encounter);
+        } else if (command.equals("2")) {
+//            moves to the first neighbour on the list
+                
+            this.move(0);
+            
+        } else if (command.equals("3")) {
+//            moves to the second neighbour on the list
+                
+            this.move(1);
+                
+        } else if (command.equals("c")) {
+            this.showCharacter(hero);
+        }
     }
 }

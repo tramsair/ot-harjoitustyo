@@ -13,6 +13,7 @@ public class StartMenu {
     
     private Map<String, String> commands;
     private Scanner scribe;
+    private boolean shutoff = false;
     
     private Dice die;
 
@@ -37,48 +38,15 @@ public class StartMenu {
     
     public void launch() {
         
-        System.out.println("|*********************************************************************************************************|");
-        System.out.println("Welcome to Silent Château(working name) interface test preliminary iteration alfa, v0,03");
-        System.out.println("|*********************************************************************************************************|");
+        this.printTitle();
 
-        
 //        Placeholder for the Main Menu -interface
-        while (true) {
-            System.out.println("---------");
-            System.out.println("Main Menu");
-            System.out.println("---------");
-            System.out.println("Available commands:");
-            printCommands();
-            
-            System.out.println();
-            System.out.println("Choose Command: ");
+        while (!this.shutoff) {
+            this.printMenu();
             
             String command = scribe.nextLine();
-                    
-            if (!commands.keySet().contains(command)) {
-                System.out.println("Invalid command");
-                printCommands();
-            }
-
-            if (command.equals("x")) {
-                System.out.println("Good bye");
-                break;
-            }
-            
-            if (command.equals("1")) {
-                System.out.println(die.rollDie(6));
-            }
-            
-            if (command.equals("2")) {
-                System.out.println("The story begins...");
-                
-                
-//                initializing the game
-                WorldMap map = new WorldMap(this.scribe, die);
-                
-                map.launch();
                    
-            }
+            this.commandsLoop(command);
 
         }
     }
@@ -104,6 +72,52 @@ public class StartMenu {
         for (String command : orders) {
             commands.put(Integer.toString(commands.size()), command);
         }
+    }
+    
+    public void commandsLoop(String command) {
+                   
+//            Error message for invalid commands by user
+        if (!commands.keySet().contains(command)) {
+            System.out.println("Invalid command");
+            printCommands();
+        }
+
+        if (command.equals("x")) {
+            System.out.println("Good bye");
+            this.shutoff = true;
+        }
+            
+        if (command.equals("1")) {
+            System.out.println(die.rollDie(6));
+        }
+            
+        if (command.equals("2")) {
+            System.out.println("The story begins...");
+                
+                
+//          initializing the game and moving to the gameplay UI
+            WorldMap map = new WorldMap(this.scribe, die);
+                
+            map.launch();
+                   
+        }
+    }
+    
+    public void printMenu() {
+        System.out.println("---------");
+        System.out.println("Main Menu");
+        System.out.println("---------");
+        System.out.println("Available commands:");
+        printCommands();
+            
+        System.out.println();
+        System.out.println("Choose Command: ");
+    }
+    
+    public void printTitle() {
+        System.out.println("|*********************************************************************************************************|");
+        System.out.println("Welcome to Silent Château(working name) interface test preliminary iteration alfa, v0,03");
+        System.out.println("|*********************************************************************************************************|");
     }
     
 

@@ -45,7 +45,7 @@ public class Meadow extends Area implements AreaInterface {
         this.addCommand("1", "Explore area");
         this.addCommand("2", "Enter trough the Gate");
         
-        Encounter thing = new Encounter("placeholder description", 25, "physique", "finesse", 
+        Encounter thing = new Encounter("placeholder description", 25, "physique", "agility", 
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
         Encounter thing2 = new Encounter("placeholder description2", 25, "charisma", "willpower", 

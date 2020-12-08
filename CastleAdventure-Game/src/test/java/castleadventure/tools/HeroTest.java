@@ -1,3 +1,5 @@
+package castleadventure.tools;
+
 
 import castleadventure.tools.Hero;
 import org.junit.After;
