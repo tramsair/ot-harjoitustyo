@@ -6,6 +6,6 @@ päivä | aika | mitä tein
 | 1.12. |  2   | Arkkitehtuuri.md:n teko, kuvauksen laatiminen. Testien laajennusta|
 | 2.12. |  6   | Projektin luokkien uudelleensäätö parempaan järjestykseen ja erilleen käyttöliittymästä|
 | 7.12. |  4   | Vaihtoehtojen lisäys Encounteriin. Encounterin yleinen hiominen ja parantelu. Game Over:in implementointi|
-| 8.12. |  6   | Edellisen päivän hommien viimeistely, Javadocien implementointi, testien lisäämistä, jarien teon implementointi, checkstylen korjauilu luokkia järjestämällä|
+| 8.12. |  6   | Edellisen päivän hommien viimeistely, Javadocien implementointi, testien lisäämistä, jarien teon implementointi, checkstylen korjailu luokkia järjestämällä, dokumentaation päivitys|
 | yht. |  31   | 
 
