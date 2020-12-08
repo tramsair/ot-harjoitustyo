@@ -5,5 +5,6 @@ päivä | aika | mitä tein
 | 25.11. |  4   | Checkstylen lisäys ja testien laajennus, lisää työtä perustoiminnallisuuteen ja testeihin|
 | 1.12. |  2   | Arkkitehtuuri.md:n teko, kuvauksen laatiminen. Testien laajennusta|
 | 2.12. |  6   | Projektin luokkien uudelleensäätö parempaan järjestykseen ja erilleen käyttöliittymästä|
-| yht. |  21   | 
+| 7.12. |  4   | Vaihtoehtojen lisäys Encounteriin. Encounterin yleinen hiominen ja parantelu. Game Over:in implementointi|
+| yht. |  25   | 
 
