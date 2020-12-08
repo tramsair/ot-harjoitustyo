@@ -5,7 +5,7 @@ Toistaiseksi toteutettu alustava nopanheitto toiminnallisuus, ja hahmon luonti, 
 
 ## Dokumentaatio
 
-[Vaatimusmäärittely](https://github.com/tramsair/ot-harjoitustyo/dokumentaatio/kayttoohje.md)
+[Käyttöohje](https://github.com/tramsair/ot-harjoitustyo/dokumentaatio/kayttoohje.md)
 
 [Vaatimusmäärittely](https://github.com/tramsair/ot-harjoitustyo/blob/master/dokumentaatio/vaatimusmaarittely.md)
 
