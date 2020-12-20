@@ -11,7 +11,7 @@ Tallentaessaan Ohjelma luo tiedoston "saveGame.txt" kansioon jossa se toimii. ta
 Ohjelma Käynnistyy komennolla 
 
 ```
-java -jar castleadventuregameV1.jar
+java -jar CastleAdventureGame-1.0.jar
 ```
 
 ## Pelaaminen
