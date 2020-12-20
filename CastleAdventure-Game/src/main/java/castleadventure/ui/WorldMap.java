@@ -11,7 +11,9 @@ import castleadventure.tools.Encounter;
 import castleadventure.tools.Hero;
 import castleadventure.world.Area;
 import castleadventure.world.Cortyard;
+import castleadventure.world.Garden;
 import castleadventure.world.Hall;
+import castleadventure.world.Kitchens;
 import castleadventure.world.Meadow;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -99,6 +101,40 @@ public class WorldMap {
     }
     
 /**
+ * Method is the loop that forms the core of the in-game menu and interface, 
+ * resolving commands given by the user
+ * @param command user's command regarding on the proceeding within the game
+ */
+    public void launchLoop(String command) {
+                          
+//            Error message for invalid commands by user
+        if (!currentArea.getCommands().keySet().contains(command)) {
+            System.out.println("Invalid command");
+            
+        } else if (command.equals("x")) {
+            System.out.println("Returning to menu...");
+            this.gameOver = true;
+            
+        } else if (command.equals("1")) {
+//            Rolls for random encounter from the location
+            Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
+                
+            this.challenge(encounter);
+        } else if (command.equals("2") || command.equals("3") || command.equals("4") || command.equals("5") || command.equals("6")) {
+//            moves to the corresponding neighbour on the list
+                
+            this.move(Integer.parseInt(command) - 2);
+                
+        } else if (command.equals("r")) {
+
+            this.rest();
+
+        } else if (command.equals("c")) {
+            this.showCharacter(hero);
+        }
+    }
+    
+/**
  * Method prints out the commands available on the area the player character is at.
  */
     public void printCommands(Area area) {
@@ -147,6 +183,8 @@ public class WorldMap {
         this.map.add(new Meadow());
         this.map.add(new Cortyard());
         this.map.add(new Hall());
+        this.map.add(new Garden());
+        this.map.add(new Kitchens());
     }
     
   
@@ -156,6 +194,7 @@ public class WorldMap {
  * Method moves the active area to the indicated neighbour
  * #BUG NOTE: For yet unkown reason the method does not allow mowing back to the 
  * first area, "Meadow"
+ * #BUG SOLVED: Added "break;" to cut the loop when correct area is found
  * 
  * @param number input from the user, specifies to which of the neighboring areas 
  * the player character moves
@@ -172,9 +211,10 @@ public class WorldMap {
                 }
                 this.currentArea = area;
                 this.currentArea.arrive(hero);
+                break;
             } else {
 //      Developement indicator that the program goes trough the list properly
-                System.out.println("Placeholder indicator Error");
+                System.out.println("Testing Indicator");
             }
         }
     
@@ -187,6 +227,7 @@ public class WorldMap {
  */    
     public void challenge(Encounter challenge) {
         
+        System.out.println(challenge.getDescription());
         System.out.println("What do you do? ");
         System.out.println("");
         this.printActions(challenge);
@@ -210,7 +251,6 @@ public class WorldMap {
     public void challengeLoop(Encounter challenge) {
         
         String command = scribe.nextLine();
-        String result;
         
         if (!challenge.getCommands().keySet().contains(command)) {
             System.out.println("Invalid command");
@@ -273,40 +313,7 @@ public class WorldMap {
         }
     }
 
-/**
- * Method is the loop that forms the core of the in-game menu and interface, 
- * resolving commands given by the user
- * @param command user's command regarding on the proceeding within the game
- */
-    public void launchLoop(String command) {
-        
-                    
-//            Error message for invalid commands by user
-        if (!currentArea.getCommands().keySet().contains(command)) {
-            System.out.println("Invalid command");
-            
-        } else if (command.equals("x")) {
-            System.out.println("Returning to menu...");
-            this.gameOver = true;
-            
-        } else if (command.equals("1")) {
-//            Rolls for random encounter from the location
-            Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
-                
-            this.challenge(encounter);
-        } else if (command.equals("2") || command.equals("3") || command.equals("4") || command.equals("5") || command.equals("6")) {
-//            moves to the corresponding neighbour on the list
-                
-            this.move(Integer.parseInt(command));
-                
-        } else if (command.equals("r")) {
 
-            this.rest();
-
-        } else if (command.equals("c")) {
-            this.showCharacter(hero);
-        }
-    }
 /**
  * Method allows the player character to "rest", which regains one HP, and also
  * has a 1 in 6 chance of triggering an encounter

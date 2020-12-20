@@ -31,6 +31,8 @@ public class Hall extends Area implements AreaInterface {
         Cortyard cortyard = new Cortyard();
         cortyard.setName("Cortyard");
         this.neighbours.add(cortyard);
+        
+        
     }
     
     @Override

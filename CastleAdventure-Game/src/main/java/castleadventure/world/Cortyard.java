@@ -71,11 +71,11 @@ public class Cortyard extends Area implements AreaInterface {
 //            positive outcome, negative outcome, otherPositive, otherNegative, 
 //            is it deadly?, death message(leave empty if not deadly), action one, action two two
         
-        Encounter thing = new Encounter("placeholder description", 25, "physique", "agility", 
+        Encounter thing2 = new Encounter("placeholder description", 25, "physique", "agility", 
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
-        Encounter thing2 = new Encounter("placeholder description kitchen key ", 25, "charisma", "willpower", 
-                "placeholder success", "placeholder failure", "placeholder key kitchen success", 
+        Encounter thing = new Encounter("placeholder description kitchen key ", 25, "charisma", "willpower", 
+                "placeholder success kitchen key", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", false, "", "convince(get the key)", "intimidate");
         
         this.addEncounter(thing);
