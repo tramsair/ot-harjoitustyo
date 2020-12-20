@@ -142,10 +142,10 @@ public class WorldMap {
 
             this.rest();
             
-        } else if(command.equals("t")) {
+        } else if (command.equals("t")) {
             this.loadGame();
             
-        } else if(command.equals("s")) {
+        } else if (command.equals("s")) {
             this.saveGame();
 
         } else if (command.equals("c")) {
@@ -156,7 +156,7 @@ public class WorldMap {
 /**
 * Method save the game to a text file by saving the current area and the hero
 */
-    public void saveGame(){
+    public void saveGame() {
         try {
             FileWriter saver = new FileWriter("saveGame.txt");
             saver.write(this.hero.getName() + "\r");
@@ -178,40 +178,40 @@ public class WorldMap {
             System.out.println("Game Saved");
         } catch (IOException e) {
             System.out.println("No saved games found");
-          }
+        }
     }
     
     public void loadGame() {
         try {
-        File save = new File("saveGame.txt");
-        Scanner loader = new Scanner(save);
-        ArrayList<String> list =new ArrayList<>();
-        while (loader.hasNextLine()) {
-            String data = loader.nextLine();
-            list.add(data);
-        }
-        loader.close();
-        
-        this.hero.setName(list.get(0));
-        this.hero.setHp(Integer.parseInt(list.get(1)));
-        this.hero.setAgility(Integer.parseInt(list.get(2)));
-        this.hero.setCharisma(Integer.parseInt(list.get(3)));
-        this.hero.setPhysique(Integer.parseInt(list.get(4)));
-        this.hero.setWillpower(Integer.parseInt(list.get(5)));
-        this.hero.setKnowledge(Integer.parseInt(list.get(6)));
-        this.hero.setKeyKitchen(Boolean.parseBoolean(list.get(7)));
-        this.hero.setKeyStudy(Boolean.parseBoolean(list.get(8)));
-        this.hero.setKeyTower(Boolean.parseBoolean(list.get(9)));
-        this.hero.setPass1(Boolean.parseBoolean(list.get(10)));
-        this.hero.setPass2(Boolean.parseBoolean(list.get(11)));
-        this.hero.setPass3(Boolean.parseBoolean(list.get(12)));
-        this.hero.setPass4(Boolean.parseBoolean(list.get(13)));
-        
-        for (Area area : this.map) {
-            if (area.toString().equals(list.get(14))){
-                this.currentArea = area;
+            File save = new File("saveGame.txt");
+            Scanner loader = new Scanner(save);
+            ArrayList<String> list = new ArrayList<>();
+            while (loader.hasNextLine()) {
+                String data = loader.nextLine();
+                list.add(data);
             }
-        }
+            loader.close();
+        
+            this.hero.setName(list.get(0));
+            this.hero.setHp(Integer.parseInt(list.get(1)));
+            this.hero.setAgility(Integer.parseInt(list.get(2)));
+            this.hero.setCharisma(Integer.parseInt(list.get(3)));
+            this.hero.setPhysique(Integer.parseInt(list.get(4)));
+            this.hero.setWillpower(Integer.parseInt(list.get(5)));
+            this.hero.setKnowledge(Integer.parseInt(list.get(6)));
+            this.hero.setKeyKitchen(Boolean.parseBoolean(list.get(7)));
+            this.hero.setKeyStudy(Boolean.parseBoolean(list.get(8)));
+            this.hero.setKeyTower(Boolean.parseBoolean(list.get(9)));
+            this.hero.setPass1(Boolean.parseBoolean(list.get(10)));
+            this.hero.setPass2(Boolean.parseBoolean(list.get(11)));
+            this.hero.setPass3(Boolean.parseBoolean(list.get(12)));
+            this.hero.setPass4(Boolean.parseBoolean(list.get(13)));
+
+            for (Area area : this.map) {
+                if (area.toString().equals(list.get(14))) {
+                    this.currentArea = area;
+                }
+            }
         
             System.out.println("Game Loaded");
         } catch (FileNotFoundException e) {

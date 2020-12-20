@@ -208,4 +208,5 @@ public class Hero {
                 "Willpower: " + this.getKnowledge() + "\n" +
                 "Charisma: " + this.getCharisma();
     }
+
 }

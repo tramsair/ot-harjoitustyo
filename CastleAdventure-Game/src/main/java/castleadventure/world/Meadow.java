@@ -62,9 +62,6 @@ public class Meadow extends Area implements AreaInterface {
 //            positive outcome, negative outcome, otherPositive, otherNegative, 
 //            is it deadly?, death message(leave empty if not deadly), action one, action two two
         
-        Encounter thing2 = new Encounter("placeholder description", 25, "physique", "agility", 
-                "placeholder success", "placeholder failure", "placeholder other success", 
-                "placeholder other failure", true, "you are dead", "fight", "run away");
         
         String success = "As you approach the shadow, it turns out to be a barn after all. Slumped down and grey with age, but a barn. You head inside, and discover a motionless servant girl from the old hay. She has seemingly passed away on her sleep, but her lips and fingernails are jet black. You find a rusty servants key from her pockets. It must be for the castle kitchen";
         Encounter keyBarn = new Encounter("wading amongst the rolling fog, you suddenly make up a large dark shape from the mist.", 25, "charisma", "willpower", success, success, "Silently, you kneel amongst the tall grass and back away from the looming dark shape. It does not follow after you", "Silently, you kneel amongst the tall grass and back away from the looming dark shape. It does not follow after you", false, "", "Approach the shape carefully", "Back away, without making a sound");
@@ -75,7 +72,6 @@ public class Meadow extends Area implements AreaInterface {
         if (!this.hero.getKeyKitchen()) {
             this.addEncounter(keyBarn);
         }
-        this.addEncounter(thing2);
     }
     
     
