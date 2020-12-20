@@ -202,29 +202,74 @@ public class WorldMap {
     }
     
 /**
- * Method asks user for a command and solves the encounter accordingly
+ * Method asks user for input for the encounter, repeating the question until 
+ * valid input is provided.
  * 
  * @param challenge the encounter currently being faced by the player character 
  */    
     public void challengeLoop(Encounter challenge) {
         
         String command = scribe.nextLine();
+        String result;
         
         if (!challenge.getCommands().keySet().contains(command)) {
             System.out.println("Invalid command");
                 
         } else {
             
-            if (challenge.isDeadly()) {
-                System.out.println(challenge.faceDeadlyEncounter(hero, this.die.rollExplodingDie(20), command));
-                if (this.hero.getHP() <= 0) {
-                    this.gameOver = true;
-                }
-                this.run = false;
-            } else {
-                System.out.println(challenge.faceEncounter(hero, this.die.rollExplodingDie(20), command));
-                this.run = false;
+            this.solveChallenge(challenge, command);
+            
+        }
+    }
+    
+/**
+ * Method that solves the challenge, finding out wether it was a success or not,
+ * and prints out the results, while also adjusting variables if necessary.
+ * @param challenge the challenge being faced
+ * @param command choice the player has made regarding the challenge
+ */    
+    public void solveChallenge(Encounter challenge, String command) {
+        String result;
+        
+        if (challenge.isDeadly()) {
+            result = challenge.faceDeadlyEncounter(hero, this.die.rollExplodingDie(20), command);
+            this.challengeEffectChecker(result);
+            System.out.println(result);
+            
+            if (this.hero.getHP() <= 0) {
+                this.gameOver = true;
             }
+            this.run = false;
+            
+        } else {
+            result = challenge.faceEncounter(hero, this.die.rollExplodingDie(20), command);
+            this.challengeEffectChecker(result);
+            System.out.println(result);
+            this.run = false;
+        }
+    }
+/**
+ * Method checks if the challenge has resulted in some lasting effects, like 
+ * found hidden passages or keys picked up.
+ * @param result outcome message of the challenge
+ */    
+    public void challengeEffectChecker(String result) {
+        if (result.contains("key") && result.contains("kitchen")) {
+            this.hero.setKeyKitchen(true);
+        } else if (result.contains("key") && result.contains("study")) {
+            this.hero.setKeyStudy(true);
+        } else if (result.contains("key") && result.contains("tower")) {
+            this.hero.setKeyTower(true);
+        } else if (result.contains("kitchen") && result.contains("dungeon")) {
+            this.hero.setPass1(true);
+        } else if (result.contains("rooms") && result.contains("dungeon")) {
+            this.hero.setPass2(true);
+        } else if (result.contains("grand hall") && result.contains("dungeon")) {
+            this.hero.setPass3(true);
+        } else if (result.contains("garden") && result.contains("study")) {
+            this.hero.setPass4(true);
+        } else if (result.contains("restore") && result.contains("health")) {
+            this.hero.setHp(this.hero.getHP() + 1);
         }
     }
 
@@ -249,18 +294,32 @@ public class WorldMap {
             Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
                 
             this.challenge(encounter);
-        } else if (command.equals("2")) {
-//            moves to the first neighbour on the list
+        } else if (command.equals("2") || command.equals("3") || command.equals("4") || command.equals("5") || command.equals("6")) {
+//            moves to the corresponding neighbour on the list
                 
-            this.move(0);
-            
-        } else if (command.equals("3")) {
-//            moves to the second neighbour on the list
+            this.move(Integer.parseInt(command));
                 
-            this.move(1);
-                
+        } else if (command.equals("r")) {
+
+            this.rest();
+
         } else if (command.equals("c")) {
             this.showCharacter(hero);
         }
     }
+/**
+ * Method allows the player character to "rest", which regains one HP, and also
+ * has a 1 in 6 chance of triggering an encounter
+ */    
+    public void rest() {
+        this.hero.setHp(this.hero.getHP() + 1);
+            
+        if (this.die.rollDie(6) == 1) {
+            Encounter encounter = currentArea.randomEncounter(die.rollDie(currentArea.getEncountersNumber()));
+                
+            this.challenge(encounter);
+        }
+    }
+    
+
 }

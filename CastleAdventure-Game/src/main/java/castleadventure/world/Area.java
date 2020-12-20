@@ -30,7 +30,7 @@ public class Area implements AreaInterface {
     
 //    -----------------------------------------------------------------
 //    setters and adders
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
     

@@ -51,15 +51,15 @@ public class Encounter {
     
  /**
  * Method solves an encounter for the player character depending on the 
- * sum of the value of a roll and appropriate charactersitic.
+ * sum of the value of a roll and appropriate characteristic.
  *
  * @param hero player's character
  *
  * @param roll value of a dice roll made outside the method
  * 
- * @param action player's cinput on the choice between two actions
+ * @param action player's input on the choice between two actions
  * 
- * @return message of failure or succeesse depending on the comparison result
+ * @return message of failure or success depending on the comparison result
  */
     public String faceEncounter(Hero hero, int roll, String action) {       
         
@@ -88,9 +88,9 @@ public class Encounter {
  *
  * @param roll value of a dice roll made outside the method
  * 
- * @param action player's cinput on the choice between two actions
+ * @param action player's input on the choice between two actions
  * 
- * @return message of failure or succeesse depending on the comparison result
+ * @return message of failure or success depending on the comparison result
  */
     public String faceDeadlyEncounter(Hero hero, int roll, String action) {
 

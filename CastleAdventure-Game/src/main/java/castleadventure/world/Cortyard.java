@@ -37,6 +37,14 @@ public class Cortyard extends Area implements AreaInterface {
         Hall hall = new Hall();
         hall.setName("Hall");
         this.neighbours.add(hall);
+        
+        Kitchens kitchens = new Kitchens();
+        kitchens.setName("Kitchens");
+        this.neighbours.add(kitchens);
+        
+        Garden garden = new Garden();
+        garden.setName("Garden");
+        this.neighbours.add(garden);
     }
     
     @Override
@@ -55,6 +63,9 @@ public class Cortyard extends Area implements AreaInterface {
         this.addCommand("1", "Explore area");
         this.addCommand("2", "Exit through the gate");
         this.addCommand("3", "Enter through the main doors");
+        if (this.hero.getKeyKitchen()) {
+            this.addCommand("4", "Enter through the side door");
+        }
         
 //        Fill encounter in order: description, difficulty, attribute, other Attribute, 
 //            positive outcome, negative outcome, otherPositive, otherNegative, 
@@ -63,9 +74,9 @@ public class Cortyard extends Area implements AreaInterface {
         Encounter thing = new Encounter("placeholder description", 25, "physique", "agility", 
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
-        Encounter thing2 = new Encounter("placeholder description2", 25, "charisma", "willpower", 
-                "placeholder success", "placeholder failure", "placeholder other success", 
-                "placeholder other failure", false, "", "convince", "intimidate");
+        Encounter thing2 = new Encounter("placeholder description kitchen key ", 25, "charisma", "willpower", 
+                "placeholder success", "placeholder failure", "placeholder key kitchen success", 
+                "placeholder other failure", false, "", "convince(get the key)", "intimidate");
         
         this.addEncounter(thing);
         this.addEncounter(thing2);
