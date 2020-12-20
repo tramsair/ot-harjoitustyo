@@ -1,5 +1,5 @@
 /**
- * Class representing the Hall gameplay area
+ * Class representing the Dungeon gameplay area which is hidden before discovery
  */
 package castleadventure.world;
 
@@ -10,7 +10,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 
-public class Hall extends Area implements AreaInterface {
+public class Dungeon extends Area implements AreaInterface {
+
     
     String description;
     private ArrayList<Area> neighbours;
@@ -18,67 +19,71 @@ public class Hall extends Area implements AreaInterface {
     private Map<String, String> commands;
     private Hero hero;
     private String name;
-
-    public Hall() {
+    
+    public Dungeon() {
         this.description = "";
         this.encounters = new ArrayList();
         this.commands = new TreeMap<>();
         this.neighbours = new ArrayList();
         this.hero = new Hero("");
-        this.name = "Hall";
-    }    
+        this.name = "Dungeon";
+    }
+
     
     @Override
     public void addNeighbour() {
-        Cortyard cortyard = new Cortyard();
-        cortyard.setName("Cortyard");
-        this.neighbours.add(cortyard);
-        
-        Study study = new Study();
-        study.setName("Study");
-        this.neighbours.add(study);
         
         Rooms rooms = new Rooms();
         rooms.setName("Rooms");
         this.neighbours.add(rooms);
         
-        Kitchens kitchens = new Kitchens();
-        kitchens.setName("Kitchens");
-        this.neighbours.add(kitchens);
-        
         GrandHall grandHall = new GrandHall();
         grandHall.setName("Grand Hall");
         this.neighbours.add(grandHall);
+        
+        Kitchens kitchens = new Kitchens();
+        kitchens.setName("Kitchens");
+        this.neighbours.add(kitchens);
     }
     
     @Override
     public Area getNeighbour(int index) {
         return this.neighbours.get(index);
     }
-    
+
+
+//    Builds and prepares the area
     @Override
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Hall Description**");
+        this.setDescription("**Placeholder for Dungeon Description**");
         
         this.addCommand("1", "Explore area");
-        this.addCommand("2", "Exit through the Doors");
+        this.addCommand("2", "Exit through the gate");
+        this.addCommand("3", "Enter through the main doors");
+        if (this.hero.getKeyKitchen()) {
+            this.addCommand("4", "Enter through the side door");
+        }
         
-        Encounter thing = new Encounter("placeholder description", 25, "physique", "agility", 
+//        Fill encounter in order: description, difficulty, attribute, other Attribute, 
+//            positive outcome, negative outcome, otherPositive, otherNegative, 
+//            is it deadly?, death message(leave empty if not deadly), action one, action two two
+        
+        Encounter thing2 = new Encounter("placeholder description", 25, "physique", "agility", 
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
-        Encounter thing2 = new Encounter("placeholder description2", 25, "charisma", "willpower", 
-                "placeholder success", "placeholder failure", "placeholder other success", 
-                "placeholder other failure", false, "", "convince", "intimidate");
         
+        Encounter thing = new Encounter("placeholder description2 ", 25, "charisma", "willpower", 
+                "placeholder success", "placeholder failure", "placeholder other success", 
+                "placeholder other failure", false, "", "convincea", "intimidate");
+        
+
         this.addEncounter(thing);
         this.addEncounter(thing2);
-        
     }
 
 
     
     
-}    
-
+}

@@ -62,6 +62,8 @@ public class WorldMap {
 //        Interface starts here
 //========================================================================================
         while (!this.gameOver) {
+            this.currentArea.arrive(hero);
+            
             currentArea.addCommand("x", "Return to Main Menu");
             currentArea.addCommand("c", "View Character");
         

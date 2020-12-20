@@ -1,4 +1,6 @@
-
+/**
+ * Class representing the Cortyard gameplay area
+ */
 package castleadventure.world;
 
 import castleadventure.tools.Encounter;
@@ -74,11 +76,14 @@ public class Cortyard extends Area implements AreaInterface {
         Encounter thing2 = new Encounter("placeholder description", 25, "physique", "agility", 
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
+        
         Encounter thing = new Encounter("placeholder description kitchen key ", 25, "charisma", "willpower", 
                 "placeholder success kitchen key", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", false, "", "convince(get the key)", "intimidate");
         
-        this.addEncounter(thing);
+        if(!this.hero.getKeyKitchen()) {
+            this.addEncounter(thing);
+        }
         this.addEncounter(thing2);
     }
 
