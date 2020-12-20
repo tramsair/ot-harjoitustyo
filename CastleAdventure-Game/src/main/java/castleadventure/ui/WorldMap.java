@@ -248,7 +248,9 @@ public class WorldMap {
  */
     public void printIntro() {
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("*A placeholder for the Intro*");
+        System.out.println("*You glance up from the letter, once more laying your eyes on the castle in the horizon. It is looming over the countryside, more than ever before even. It should be midday, but the surroundings are enveloped in an eternal twilight, that is radiating from the broken tower of your family manor. It has been a long time since you've been back here, and even if you did not leave with the fondest of memories, you cant help but feel sorrowful for your childhood home. You tuck the letter back to your bag, taking out the dagger instead. A strange tool from a distant land, it has three blades and is triangular. It was given to you by your dad, before you left.\n" +
+"\n" +
+"You rise up, sighing. It was a long trip here, but you feel you are barely at the halfway point. You glance around your camp. Its not much, you left your horse to the last town. No need to drag the poor animal into this. Grabbing only your sword and your bag. you steel yourself. It is time to go, time to try to fix the mistakes of your family.*");
         System.out.println("--------------------------------------------------------------------");
         System.out.println("");
     }
