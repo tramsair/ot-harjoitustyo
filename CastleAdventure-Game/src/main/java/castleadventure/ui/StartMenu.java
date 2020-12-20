@@ -140,7 +140,7 @@ public class StartMenu {
  */    
     public void printTitle() {
         System.out.println("|*********************************************************************************************************|");
-        System.out.println("Welcome to Silent Château(working name) interface test preliminary iteration alfa, v0,03");
+        System.out.println("The Silent Château v1.0");
         System.out.println("|*********************************************************************************************************|");
     }
     

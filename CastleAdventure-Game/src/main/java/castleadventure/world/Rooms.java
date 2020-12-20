@@ -61,7 +61,7 @@ public class Rooms extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Rooms Description**");
+        this.setDescription("**The opulent lodgings for quests and the master of the house. The number of rooms seems to not add up, and the area seems much larger than plausible. Going back trough a door does not always lead back to where you came from**");
         
         this.addCommand("1", "Search through the silent halls of the quest rooms and living quarters");
         this.addCommand("2", "Take the main door back to the main hallway");

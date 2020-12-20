@@ -44,7 +44,7 @@ public class Meadow extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Meadow Description**");
+        this.setDescription("**Twilight surrounds the hill around the castle-manor, even during daytime. A long, rough grass has grown up to waist everywhere. Occasional barn or shack could be seen on the meadow surrounding the Castle, were it not for the thick clouds of fog, moving erratically and unnaturally despite almost complete lack of wind. On top of the shallow hill stands the Castle manor, its main tower radiating the sinister darkness surrounding the meadow, and frozen in mid-collapse, the fragments stretched upwards towards the sky, suspended unnaturally**");
         
         this.addCommand("1", "Survey the area surrounding the castle-manor");
         this.addCommand("2", "Head to the main gate, and enter the courtyard");

@@ -62,7 +62,7 @@ public class Hall extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Hall Description**");
+        this.setDescription("**The main hallways are dark and echoy, lined with small pillars and alcoves, and peppered with side passages. There is an eerie hum in the air, and occasionally you can hear echoes of steps, mumbling and screams, sometimes human, sometimes inhuman.**");
         
         this.addCommand("1", "Search through the shady alcoves and side-passages");
         this.addCommand("2", "Exit back to the courtyard");

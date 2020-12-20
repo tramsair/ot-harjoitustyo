@@ -48,7 +48,7 @@ public class Garden extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Garden Description**");
+        this.setDescription("**Rough wines, overgrown bushes, and twisted, sickly trees with hanging branches cover the neglected and twisted Garden. Somehow the plants are growing even with the minimal light available, but they look changed. Corrupted, somehow, with their dark leaves and greying branches. Sharp thorns are appearing on almost every plant, and you can spot remains of small animals within the twisting vines**");
         
         this.addCommand("1", "Explore the winding paths among the overgrown and twisted bushes and trees");
         this.addCommand("2", "Head back to the courtyard");

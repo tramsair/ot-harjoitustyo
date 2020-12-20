@@ -57,7 +57,7 @@ public class Dungeon extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Dungeon Description**");
+        this.setDescription("**The cold, rough stone walls of the hidden dungeon glisten with condensation, As sighs and wails still echo trough the halls. Lines and lines of heavy cell doors with wide view-ports with bars fill the dungeon, and outside, several rooms that are are equipped to look like something between a hospital operation room, torture chamber and witch doctor's den. Remains of experiments lay around those rooms, details visible on them too gruesome to describe**");
         
         this.addCommand("1", "Explore the bleak cells and halls of the dungeon, and the sinister instruments scattered within");
         if (this.hero.getPass2()) {

@@ -57,7 +57,7 @@ public class Study extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Study Description**");
+        this.setDescription("**The study is a massive library, split into more open study spaces and the cramped archives, a labyrinth of shelves and dusty books. Sounds of steps and rustling of pages occasionally echo around the surprisingly cold halls, and you swear some of the books are shivering on the shelves when you are not looking**");
         
         this.addCommand("1", "Search the dusty, dark maze of bookshelves for information and knowledge");
         this.addCommand("2", "Exit the library back to the main hall");

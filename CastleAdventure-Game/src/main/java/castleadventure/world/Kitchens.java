@@ -57,7 +57,7 @@ public class Kitchens extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Kitchen Description**");
+        this.setDescription("**The cramped and messy lodgings of the servants. Tucked in the corners where they will not be seen or heard, the layout is unintuitive and easy to get lost at. Also, you can hear there are others here, and everywhere you go you see signs of fights.**");
         
         this.addCommand("1", "Search the kitchens and the servants quarters for clues and something useful");
         

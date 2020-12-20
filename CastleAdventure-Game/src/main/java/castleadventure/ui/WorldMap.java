@@ -71,6 +71,9 @@ public class WorldMap {
 //        Interface starts here
 //========================================================================================
         while (!this.gameOver) {
+            if (this.currentArea.equals(map.get(map.size() - 1))){
+                this.gameOver();
+            }
             this.currentArea.arrive(hero);
             
             currentArea.addCommand("x", "Return to Main Menu");
@@ -415,6 +418,10 @@ public class WorldMap {
                 
             this.challenge(encounter);
         }
+    }
+    
+    public void gameOver(){
+        this.gameOver = true;
     }
     
 

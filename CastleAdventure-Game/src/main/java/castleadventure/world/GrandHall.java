@@ -65,7 +65,7 @@ public class GrandHall extends Area implements AreaInterface {
     public void arrive(Hero hero) {
         this.hero = hero;
         
-        this.setDescription("**Placeholder for Grand Hall Description**");
+        this.setDescription("**The Grand Hall. Place of many generous feasts and opulent gatherings. Even within its fading state, the high ceiling and the large pillars command awe. But something is very wrong. Light does not seem to work as it should, the darkness swallowing it way too quickly. And the geometry of the hall feels wrong, the angles misaligned, and twisted inwards. And within the darkness, there are sounds and  steps. Like the members of the last feast still wandering about the Grand Hall.**");
         
         this.addCommand("1", "Carefully inspect the dark corners and abandoned tables of the grand hall");
         this.addCommand("2", "Head back to the main hallway, thorough the large double doors");
