@@ -86,8 +86,32 @@ public class Hero {
             
     }
     
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public void setHp(int hp) {
         this.healthPoints = hp;
+    }
+    
+    public void setPhysique(int number) {
+        this.physique = number;
+    }
+    
+    public void setAgility(int number) {
+        this.agility = number;
+    }
+    
+    public void setKnowledge(int number) {
+        this.knowledge = number;
+    }
+    
+    public void setWillpower(int number) {
+        this.willpower = number;
+    }
+    
+    public void setCharisma(int number) {
+        this.charisma = number;
     }
     
     public void setKeyKitchen(boolean key) {

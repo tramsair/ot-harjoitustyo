@@ -11,10 +11,19 @@ import castleadventure.tools.Encounter;
 import castleadventure.tools.Hero;
 import castleadventure.world.Area;
 import castleadventure.world.Cortyard;
+import castleadventure.world.Dungeon;
 import castleadventure.world.Garden;
+import castleadventure.world.GrandHall;
 import castleadventure.world.Hall;
 import castleadventure.world.Kitchens;
 import castleadventure.world.Meadow;
+import castleadventure.world.Rooms;
+import castleadventure.world.Study;
+import castleadventure.world.TheTower;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -66,6 +75,8 @@ public class WorldMap {
             
             currentArea.addCommand("x", "Return to Main Menu");
             currentArea.addCommand("c", "View Character");
+            currentArea.addCommand("t", "Load Game");
+            currentArea.addCommand("s", "Save Game");
         
             System.out.println(currentArea.getDescription());
             System.out.println("");
@@ -130,11 +141,85 @@ public class WorldMap {
         } else if (command.equals("r")) {
 
             this.rest();
+            
+        } else if(command.equals("t")) {
+            this.loadGame();
+            
+        } else if(command.equals("s")) {
+            this.saveGame();
 
         } else if (command.equals("c")) {
             this.showCharacter(hero);
         }
     }
+    
+/**
+* Method save the game to a text file by saving the current area and the hero
+*/
+    public void saveGame(){
+        try {
+            FileWriter saver = new FileWriter("saveGame.txt");
+            saver.write(this.hero.getName() + "\r");
+            saver.write(String.valueOf(this.hero.getHP()) + "\r");
+            saver.write(String.valueOf(this.hero.getAgility()) + "\r");
+            saver.write(String.valueOf(this.hero.getCharisma()) + "\r");
+            saver.write(String.valueOf(this.hero.getPhysique()) + "\r");
+            saver.write(String.valueOf(this.hero.getWillpower()) + "\r");
+            saver.write(String.valueOf(this.hero.getKnowledge()) + "\r");
+            saver.write(String.valueOf(this.hero.getKeyKitchen()) + "\r");
+            saver.write(String.valueOf(this.hero.getKeyStudy()) + "\r");
+            saver.write(String.valueOf(this.hero.getKeyTower()) + "\r");
+            saver.write(String.valueOf(this.hero.getPass1()) + "\r");
+            saver.write(String.valueOf(this.hero.getPass2()) + "\r");
+            saver.write(String.valueOf(this.hero.getPass3()) + "\r");
+            saver.write(String.valueOf(this.hero.getPass4()) + "\r");
+            saver.write(this.currentArea.toString() + "\r");
+            saver.close();
+            System.out.println("Game Saved");
+        } catch (IOException e) {
+            System.out.println("No saved games found");
+          }
+    }
+    
+    public void loadGame() {
+        try {
+        File save = new File("saveGame.txt");
+        Scanner loader = new Scanner(save);
+        ArrayList<String> list =new ArrayList<>();
+        while (loader.hasNextLine()) {
+            String data = loader.nextLine();
+            list.add(data);
+        }
+        loader.close();
+        
+        this.hero.setName(list.get(0));
+        this.hero.setHp(Integer.parseInt(list.get(1)));
+        this.hero.setAgility(Integer.parseInt(list.get(2)));
+        this.hero.setCharisma(Integer.parseInt(list.get(3)));
+        this.hero.setPhysique(Integer.parseInt(list.get(4)));
+        this.hero.setWillpower(Integer.parseInt(list.get(5)));
+        this.hero.setKnowledge(Integer.parseInt(list.get(6)));
+        this.hero.setKeyKitchen(Boolean.parseBoolean(list.get(7)));
+        this.hero.setKeyStudy(Boolean.parseBoolean(list.get(8)));
+        this.hero.setKeyTower(Boolean.parseBoolean(list.get(9)));
+        this.hero.setPass1(Boolean.parseBoolean(list.get(10)));
+        this.hero.setPass2(Boolean.parseBoolean(list.get(11)));
+        this.hero.setPass3(Boolean.parseBoolean(list.get(12)));
+        this.hero.setPass4(Boolean.parseBoolean(list.get(13)));
+        
+        for (Area area : this.map) {
+            if (area.toString().equals(list.get(14))){
+                this.currentArea = area;
+            }
+        }
+        
+            System.out.println("Game Loaded");
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     
 /**
  * Method prints out the commands available on the area the player character is at.
@@ -187,6 +272,11 @@ public class WorldMap {
         this.map.add(new Hall());
         this.map.add(new Garden());
         this.map.add(new Kitchens());
+        this.map.add(new Study());
+        this.map.add(new Rooms());
+        this.map.add(new GrandHall());
+        this.map.add(new Dungeon());
+        this.map.add(new TheTower());
     }
     
   
@@ -214,9 +304,6 @@ public class WorldMap {
                 this.currentArea = area;
                 this.currentArea.arrive(hero);
                 break;
-            } else {
-//      Developement indicator that the program goes trough the list properly
-                System.out.println("Testing Indicator");
             }
         }
     

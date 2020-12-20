@@ -67,13 +67,25 @@ public class GrandHall extends Area implements AreaInterface {
         
         this.setDescription("**Placeholder for Grand Hall Description**");
         
-        this.addCommand("1", "Explore area");
-        this.addCommand("2", "Exit through the gate");
-        this.addCommand("3", "Enter through the main doors");
-        if (this.hero.getKeyKitchen()) {
-            this.addCommand("4", "Enter through the side door");
+        this.addCommand("1", "Carefully inspect the dark corners and abandoned tables of the grand hall");
+        this.addCommand("2", "Head back to the main hallway, thorough the large double doors");
+        this.addCommand("3", "Take the door on the left to the rooms and living quarters");
+        this.addCommand("4", "Pass trough the inconspicuous door on the right and enter the kitchens");
+        if (this.hero.getPass3()) {
+            this.addCommand("5", "push aside the hollow statue at the alcove on the left, and take the secret passage beneath to the dungeon");
+        }
+        if (this.hero.getKeyTower()) {
+            this.addCommand("6", "Open the lock on the heavy door at the back of the grand hall, and ascend the spiral staircase to the broken tower");
         }
         
+
+        this.encounterSetter();
+    }
+
+    /**
+     * Method to set the encounters of the area
+     */
+    public void encounterSetter() {
 //        Fill encounter in order: description, difficulty, attribute, other Attribute, 
 //            positive outcome, negative outcome, otherPositive, otherNegative, 
 //            is it deadly?, death message(leave empty if not deadly), action one, action two two
@@ -82,16 +94,15 @@ public class GrandHall extends Area implements AreaInterface {
                 "placeholder success", "placeholder failure", "placeholder other success", 
                 "placeholder other failure", true, "you are dead", "fight", "run away");
         
-        Encounter thing = new Encounter("placeholder description2 ", 25, "charisma", "willpower", 
-                "placeholder success", "placeholder failure", "placeholder other success", 
-                "placeholder other failure", false, "", "convincea", "intimidate");
+        Encounter thing = new Encounter("placeholder description kitchen key ", 25, "charisma", "willpower", 
+                "placeholder success kitchen key", "placeholder failure", "placeholder other success", 
+                "placeholder other failure", false, "", "convince(get the key)", "intimidate");
         
-
-        this.addEncounter(thing);
+        if (!this.hero.getKeyKitchen()) {
+            this.addEncounter(thing);
+        }
         this.addEncounter(thing2);
     }
-
-
     
     
 }

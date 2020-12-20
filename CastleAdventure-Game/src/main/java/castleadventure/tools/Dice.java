@@ -26,7 +26,7 @@ public class Dice {
      * @return number between 1 and the value of "faces"
      */
     public int rollDie(int faces) {
-        return (int)(Math.random() * faces) + 1;
+        return (int) (Math.random() * faces) + 1;
     }
     
     //Rolls multiple dice and adds the roll restults together
