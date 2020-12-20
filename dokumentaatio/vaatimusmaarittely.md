@@ -10,11 +10,11 @@ Tarkoituksena on luoda simppeli roolipeli jossa kolutaan yksinkertaista linnaa. 
 * Hahmon kohdatessa haasteen peli antaa pelaajalle vaihtoehtoja joista pelaaja voi valita. **tehty**
 * Peli heittää noppaa hahmolle ja/tai haasteelle, ja lisää tulokseen asiaan kuuluvan ominaisuuden. Sitten peli vertaa joko tuloksia toisiinsa, tai johonkin vakioon. Tämän periaatteen perusteella peli määrittelee voittiko vai hävisikö hahmo haasteelle. **tehty**
 * Usein häviö johtaa siihen että hahmo menettää kestopisteen. Mikäli hahmon kestopisteet laskevat nollaan, häviää pelaaja pelin. **tehty**
-
-
-## Jatkokehitysideoita
 * Hahmo voi löytää esineitä, jotka helpottavat tai mahdollistavat etenemisen pelissä. Esimerkkinä avaimet yms. **toteutettu**
 * Tietyillä alueilla voi tehdä erityistoimintoja liikkumisen ja tutkimisen lisäksi. **toteutettu**
 * Mahdollisuus tallentaa peli **toteutettu**
+
+## Jatkokehitysideoita
 * Alueet muuttuvat pysyvästi pelaajan tehdessä asioita niissä.
 * Olio joka liikkuu alueeiden välillä/jahtaa pelaajan hahmoa
+* Lisää sisältöä peliin, enemmän erilaisia alueille ominaisia haasteita ja kohtaamisia
