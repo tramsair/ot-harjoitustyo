@@ -1,12 +1,12 @@
-#Arkkitehtuurikuvaus
+# Arkkitehtuurikuvaus
 
-###Rakenne
+### Rakenne
 
 Peli jakautuu kolmeen osaan. Käyttöliittömään, "world" ja "työkalu" -luokkiin. "World" luokat mallintavat pelin maailmaa, ja sisältävät pääosan pelin informaatiosta. Työkalut sisältävät pelin satunnaisgeneraattoriluokan "Dice", kohtauksia mallintavan luokan "Encounter" ja pelaajahahmon "Hero".
 
 ![](/Pakkauskaavio.png)
 
-##Käyttöliittymä
+## Käyttöliittymä
 
 Pelin käyttöliittymä perustuu kahteen valikkoon, päävalikkoon ja pelivalikkoon. Varsinainen pelaaminen tapahtuu pelivalikossa, jonka päävalikko pelaajan käskystä käynnistää. Pelivalikon käynnistettäessä luo se automaattisesti aina uuden pelin.
 
