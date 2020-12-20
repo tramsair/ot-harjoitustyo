@@ -1,16 +1,17 @@
 # Käyttöohje
 
-Lataa tiedosto [castleadventuregameV0.1.jar](https://github.com/tramsair/ot-harjoitustyo/releases/tag/viikko6)
+Lataa tiedosto [CastleAdventureGame-1.0.jar](https://github.com/tramsair/ot-harjoitustyo/releases/tag/julkaisu)
 
 Ohjelma ei tarvitse muita tiedostoja
 
+Tallentaessaan Ohjelma luo tiedoston "saveGame.txt" kansioon jossa se toimii. tallentaessa se myös ylikirjoittaa tiedostoon.
 
 ## Ohjelman käynnistäminen
 
 Ohjelma Käynnistyy komennolla 
 
 ```
-java -jar castleadventuregameV0.1.jar
+java -jar castleadventuregameV1.jar
 ```
 
 ## Pelaaminen
