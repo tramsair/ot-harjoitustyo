@@ -7,5 +7,6 @@ päivä | aika | mitä tein
 | 2.12. |  6   | Projektin luokkien uudelleensäätö parempaan järjestykseen ja erilleen käyttöliittymästä|
 | 7.12. |  4   | Vaihtoehtojen lisäys Encounteriin. Encounterin yleinen hiominen ja parantelu. Game Over:in implementointi|
 | 8.12. |  6   | Edellisen päivän hommien viimeistely, Javadocien implementointi, testien lisäämistä, jarien teon implementointi, checkstylen korjailu luokkia järjestämällä, dokumentaation päivitys|
-| yht. |  31   | 
+| 19-20.12. |  12   |Pelin tallennuksen implementointi, testien päivitys, alueiden laajennus, sisällöntuotto, yleinene loppuhionta|
+| yht. |  43   | 
 
