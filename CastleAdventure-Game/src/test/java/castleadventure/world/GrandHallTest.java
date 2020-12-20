@@ -17,14 +17,14 @@ import static org.junit.Assert.*;
  *
  * @author Mato
  */
-public class HallTest {
+public class GrandHallTest {
     
-    Hall hall;
+    GrandHall Ghall;
     Encounter test;
     Encounter test2;
     Hero hero;
     
-    public HallTest() {
+    public GrandHallTest() {
     }
     
     @BeforeClass
@@ -38,7 +38,7 @@ public class HallTest {
     @Before
     public void setUp() {
         hero = new Hero("McMoose");
-        hall = new Hall();
+        Ghall = new GrandHall();
         
         test = new Encounter("description", 25, "physique", "agility", 
                 "success", "failure", "other success", 
@@ -57,22 +57,22 @@ public class HallTest {
     // public void hello() {}
     
     @Test
-    public void meadowSetsAndGetsNeighboursRight() {
-        hall.addNeighbour();
-        assertEquals("Cortyard", hall.getNeighbour(0).getName());
-        assertEquals("Study", hall.getNeighbour(1).getName());
-        assertEquals("Rooms", hall.getNeighbour(2).getName());
-        assertEquals("Grand Hall", hall.getNeighbour(3).getName());
-        assertEquals("Kitchens", hall.getNeighbour(4).getName());
+    public void GrandHallSetsAndGetsNeighboursRight() {
+        Ghall.addNeighbour();
+        assertEquals("Hall", Ghall.getNeighbour(0).getName());
+        assertEquals("Rooms", Ghall.getNeighbour(1).getName());
+        assertEquals("Kitchens", Ghall.getNeighbour(2).getName());
+        assertEquals("Dungeon", Ghall.getNeighbour(3).getName());
+        assertEquals("the Tower", Ghall.getNeighbour(4).getName());
     }
     
     @Test
-    public void meadowArrivesRight() {
-        hall.arrive(hero);
+    public void GrandHallArrivesRight() {
+        Ghall.arrive(hero);
         
-        assertTrue(hall.getEncountersNumber() > 0);
-        assertFalse(hall.getDescription() == null);
-        assertTrue(hall.getCommands().size() > 0);
+        assertTrue(Ghall.getEncountersNumber() > 0);
+        assertFalse(Ghall.getDescription() == null);
+        assertTrue(Ghall.getCommands().size() > 0);
         
     }
 }
