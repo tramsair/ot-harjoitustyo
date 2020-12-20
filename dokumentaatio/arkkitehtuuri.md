@@ -17,3 +17,5 @@ Ajallisten rajoitusten johdosta tallentaminen tapahtuu pelivalikon sisällä, mi
 ## Area -luokat
 
 Area -luokat world-pakkauksen sisällä sisältävät pääosan pelin informaatiosta ja logiikasta. Pelivalikko aktivoi aina kerrallaan yhden area-luokan, joka sisältää tiedon sen naapureista, toiminnoista jotka ovat saatavilla, alueen sisältämät haasteet, sekä myös avaa tai pitää suljettuna hahmon etenemiseen liittyvät vaihtoehdon, kuten lukitut ovet tai löydetyt salakäytävät.
+
+Area -luokat sisältävät siis sekä tekstiä, että Encounter- luokkia. Pelivalikko antaa syötteenä aina pelaajahahmon(hero) kulloisellekkin Area-luokalle aktivointihetkellä.
