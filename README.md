@@ -16,6 +16,7 @@ Toistaiseksi toteutettu alustava nopanheitto toiminnallisuus, ja hahmon luonti, 
 ## Releaset
 
 [Viikko 6](https://github.com/tramsair/ot-harjoitustyo/releases/tag/viikko6)
+[Loppupalautus](https://github.com/tramsair/ot-harjoitustyo/releases/tag/loppupalautus)
 
 
 ## Komentorivitoiminnot
