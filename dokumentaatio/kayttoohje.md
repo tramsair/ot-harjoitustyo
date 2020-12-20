@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Lataa tiedosto [CastleAdventureGame-1.0.jar](https://github.com/tramsair/ot-harjoitustyo/releases/tag/julkaisu)
+Lataa tiedosto [CastleAdventureGame-1.0.jar](https://github.com/tramsair/ot-harjoitustyo/releases/tag/loppupalautus)
 
 Ohjelma ei tarvitse muita tiedostoja
 
